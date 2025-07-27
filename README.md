@@ -135,6 +135,6 @@ This project is licensed under the GPL v2 or later - see the [LICENSE](LICENSE) 
 ## Related Resources
 
 - [Block Accessibility Checks Plugin](https://github.com/wordpress/block-accessibility-checks)
-- [Developer API Documentation](https://github.com/wordpress/block-accessibility-checks/blob/main/docs/developer-api.md)
+- [Developer API Documentation](https://github.com/wordpress/block-accessibility-checks/blob/main/docs/)
 - [WordPress Block Editor Handbook](https://developer.wordpress.org/block-editor/)
 - [WCAG Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
