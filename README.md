@@ -25,9 +25,9 @@ The example card block includes configurable accessibility checks for each field
 
 | Field | Type | Validation Check | Configurable Level |
 |-------|------|------------------|-------------------|
-| Heading | String | Content validation | Error/Warning/Disabled |
-| Content | String | Required content check | Error/Warning/Disabled |
-| Link | String | Required link check | Error/Warning/Disabled |
+| Heading | String | Heading attribute validation | Error/Warning/Disabled |
+| Content | String | Content attribute validation | Error/Warning/Disabled |
+| Link | String | Link attribute validation | Error/Warning/Disabled |
 
 **Note:** All validation levels are user-controlled through the Block Accessibility Checks admin interface. Administrators can set each check to Error (blocks publishing), Warning (allows publishing with notification), or Disabled (no validation).
 
