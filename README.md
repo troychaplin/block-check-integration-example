@@ -1,6 +1,6 @@
 # External Blocks A11Y Example
 
-This plugin demonstrates how to integrate custom WordPress blocks with the [Block Accessibility Checks](https://github.com/wordpress/block-accessibility-checks) plugin using its developer API. It serves as a complete working example for developers who want to add accessibility validation to their custom blocks.
+This plugin demonstrates how to integrate custom WordPress blocks with the [Block Accessibility Checks](https://github.com/troychaplin/block-accessibility-checks) plugin using its developer API. It serves as a complete working example for developers who want to add accessibility validation to their custom blocks.
 
 ## Overview
 
@@ -21,13 +21,15 @@ The plugin includes a custom "Card" block that showcases the integration with Bl
 
 ## Block Structure
 
-The example card block includes:
+The example card block includes configurable accessibility checks for each field:
 
-| Field | Type | Required | Validation |
-|-------|------|----------|------------|
-| Heading | String | Optional | Must have content if provided |
-| Content | String | Required | Must not be empty |
-| Link | String | Required | Must not be empty |
+| Field | Type | Validation Check | Configurable Level |
+|-------|------|------------------|-------------------|
+| Heading | String | Content validation | Error/Warning/Disabled |
+| Content | String | Required content check | Error/Warning/Disabled |
+| Link | String | Required link check | Error/Warning/Disabled |
+
+**Note:** All validation levels are user-controlled through the Block Accessibility Checks admin interface. Administrators can set each check to Error (blocks publishing), Warning (allows publishing with notification), or Disabled (no validation).
 
 ## Installation
 
