@@ -81,7 +81,7 @@ addFilter(
 );
 ```
 
-### 3. Asset Enqueuing
+### 3. Asset Enqueuing (`includes/block-checks-integration.php`)
 
 ```php
 function ba11y_external_block_enqueue_accessibility_assets() {
