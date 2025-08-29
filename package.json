@@ -20,12 +20,12 @@
 		"plugin-zip": "wp-scripts plugin-zip"
 	},
 	"devDependencies": {
-        "@wordpress/i18n": "5.26.0",
-		"@wordpress/prettier-config": "4.26.0",
-		"@wordpress/scripts": "30.19.0",
-		"@wordpress/stylelint-config": "23.18.0",
-		"eslint-config-prettier": "10.1.5",
-		"stylelint": "16.21.1",
+        "@wordpress/i18n": "6.2.0",
+		"@wordpress/prettier-config": "4.29.0",
+		"@wordpress/scripts": "30.22.0",
+		"@wordpress/stylelint-config": "23.21.0",
+		"eslint-config-prettier": "10.1.8",
+		"stylelint": "16.23.1",
 		"stylelint-scss": "6.12.1"
 	}
 }

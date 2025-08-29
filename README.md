@@ -23,13 +23,13 @@ The plugin includes a custom "Card" block that showcases the integration with Bl
 
 The example card block includes configurable accessibility checks for each field:
 
-| Field | Type | Validation Check | Configurable Level |
-|-------|------|------------------|-------------------|
-| Heading | String | Heading attribute validation | Error/Warning/Disabled |
-| Content | String | Content attribute validation | Error/Warning/Disabled |
-| Link | String | Link attribute validation | Error/Warning/Disabled |
+| Field | Type | Validation Check | Configurable Level | Category |
+|-------|------|------------------|-------------------|----------|
+| Heading | String | Heading attribute validation | Error/Warning/Disabled | Accessibility |
+| Content | String | Content attribute validation | Error/Warning/Disabled | Validation |
+| Link | String | Link attribute validation | Error/Warning/Disabled | Validation |
 
-**Note:** All validation levels are user-controlled through the Block Accessibility Checks admin interface. Administrators can set each check to Error (blocks publishing), Warning (allows publishing with notification), or Disabled (no validation).
+**Note:** All validation levels are user-controlled through the Block Accessibility Checks admin interface. Administrators can set each check to Error (blocks publishing), Warning (allows publishing with notification), or Disabled (no validation). Checks are categorized as either "Accessibility" or "Validation" and will appear under separate headers in the block editor.
 
 ## Installation
 
@@ -113,6 +113,11 @@ add_action( 'enqueue_block_editor_assets', 'ba11y_external_block_enqueue_accessi
 ### Asset Management
 - Enqueues validation script in block editor context
 - Includes proper dependencies for WordPress hooks and Block Accessibility Checks
+
+### UI Organization
+- Checks are automatically grouped by category in the block editor
+- Accessibility issues appear under "Accessibility Errors/Warnings" headers
+- Validation issues appear under "Validation Errors/Warnings" headers
 
 ## Testing the Integration
 

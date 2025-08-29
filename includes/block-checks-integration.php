@@ -29,6 +29,7 @@ function ba11y_external_block_register_accessibility_checks( $registry ) {
 			'warning_msg' => __( 'Consider adding a heading for better accessibility.', 'external-blocks-a11y-example' ),
 			'description' => __( 'Card heading validation', 'external-blocks-a11y-example' ),
 			'type'        => 'settings',
+			'category'    => 'accessibility',
 		)
 	);
 
@@ -41,6 +42,7 @@ function ba11y_external_block_register_accessibility_checks( $registry ) {
 			'warning_msg' => __( 'Consider adding a link for better credibility.', 'external-blocks-a11y-example' ),
 			'description' => __( 'Card link validation', 'external-blocks-a11y-example' ),
 			'type'        => 'settings',
+			'category'    => 'validation',
 		)
 	);
 
@@ -53,6 +55,7 @@ function ba11y_external_block_register_accessibility_checks( $registry ) {
 			'warning_msg' => __( 'Card content is recommended.', 'external-blocks-a11y-example' ),
 			'description' => __( 'Content validation', 'external-blocks-a11y-example' ),
 			'type'        => 'settings',
+			'category'    => 'validation',
 		)
 	);
 }
