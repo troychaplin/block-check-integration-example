@@ -35,7 +35,4 @@ $ba11y_external_block_classes = array(
 
 foreach ( $ba11y_external_block_classes as $ba11y_external_block_class ) {
     new $ba11y_external_block_class();
-} 
-
-// Include accessibility integration.
-// require_once plugin_dir_path( __FILE__ ) . 'includes/block-checks-integration.php';
+}
