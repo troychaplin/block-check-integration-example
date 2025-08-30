@@ -13,26 +13,26 @@
  * @package BA11Y_External_Block
  */
 
-if (! defined('ABSPATH') ) {
-    exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
 // Include Composer's autoload file.
 if ( file_exists( plugin_dir_path( __FILE__ ) . 'vendor/autoload.php' ) ) {
-    require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+	require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 } else {
-    wp_trigger_error( 'BA11Y Multi-Block Example Plugin: Composer autoload file not found. Please run `composer install`.', E_USER_ERROR );
-    return;
+	wp_trigger_error( 'BA11Y Multi-Block Example Plugin: Composer autoload file not found. Please run `composer install`.', E_USER_ERROR );
+	return;
 }
 
 // Instantiate the classes.
 $ba11y_external_block_classes = array(
-    \BA11Y_External_Block\Plugin_Paths::class,
-    \BA11Y_External_Block\Register_Blocks::class,
-    \BA11Y_External_Block\Enqueues::class,
-    \BA11Y_External_Block\BlockChecksIntegration::class,
+	\BA11Y_External_Block\Plugin_Paths::class,
+	\BA11Y_External_Block\Register_Blocks::class,
+	\BA11Y_External_Block\Enqueues::class,
+	\BA11Y_External_Block\BlockChecksIntegration::class,
 );
 
 foreach ( $ba11y_external_block_classes as $ba11y_external_block_class ) {
-    new $ba11y_external_block_class();
+	new $ba11y_external_block_class();
 }

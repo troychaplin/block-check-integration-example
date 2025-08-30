@@ -15,7 +15,7 @@ addFilter(
 	'external-blocks-a11y-example/validation',
 	(isValid, blockType, attributes, checkName) => {
 		// Only handle our block type
-		if (blockType !== 'external-blocks-a11y-example/card') {
+		if (blockType !== 'external-blocks-a11y-example/light-cards') {
 			return isValid;
 		}
 
