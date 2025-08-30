@@ -1,10 +1,15 @@
-const defaultConfig = require('@wordpress/scripts/config/webpack.config');
+const [ scriptConfig, moduleConfig, ] = require('@wordpress/scripts/config/webpack.config');
 const path = require('path');
 
-module.exports = {
-	...defaultConfig,
-	entry: {
-		...defaultConfig.entry(),
-		'accessibility-checks': path.resolve(__dirname, 'src/accessibility-checks.js'),
-	},
-};
+module.exports = [
+   {
+       ...scriptConfig,
+       entry: {
+           ...scriptConfig.entry(),
+           'editor-script': path.resolve(__dirname, 'src/editor-script.js'),
+           'frontend-script': path.resolve(__dirname, 'src/frontend-script.js'),
+       },
+   },
+   moduleConfig,
+];
+

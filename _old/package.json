@@ -1,0 +1,31 @@
+{
+	"name": "card-external-a11y-block",
+	"version": "0.1.0",
+	"description": "An example block that demonstrates how to use the BA11Y accessibility integration.",
+	"author": "Troy Chaplin",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+        "build": "wp-scripts build --blocks-manifest",
+		"start": "wp-scripts start --blocks-manifest",
+		"format": "npm run format:js && npm run format:php && npm run format:css",
+		"format:js": "wp-scripts lint-js --fix",
+		"format:php": "composer run format",
+		"format:css": "stylelint \"**/*.scss\" --fix",
+		"lint": "npm run lint:js && npm run lint:php && npm run lint:css",
+		"lint:js": "wp-scripts lint-js",
+		"lint:php": "composer run lint",
+		"lint:css": "stylelint \"**/*.scss\"",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip"
+	},
+	"devDependencies": {
+        "@wordpress/i18n": "6.2.0",
+		"@wordpress/prettier-config": "4.29.0",
+		"@wordpress/scripts": "30.22.0",
+		"@wordpress/stylelint-config": "23.21.0",
+		"eslint-config-prettier": "10.1.8",
+		"stylelint": "16.23.1",
+		"stylelint-scss": "6.12.1"
+	}
+}

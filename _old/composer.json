@@ -1,0 +1,21 @@
+{
+	"name": "troychaplin/external-blocks-a11y-example",
+	"description": "An example block that demonstrates how to use the BA11Y accessibility integration.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+    "version": "1.0.0",
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "v1.0.0",
+		"squizlabs/php_codesniffer": "3.12.2",
+		"wp-coding-standards/wpcs": "3.1"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"format": "./vendor/bin/phpcbf --standard=phpcs.xml.dist -v --report-summary --report-source || true",
+		"lint": "phpcs --standard=phpcs.xml.dist"
+	}
+}

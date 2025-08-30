@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function ba11y_external_block_register_accessibility_checks( $registry ) {
 	// Register check for heading.
 	$registry->register_check(
-		'external-blocks-a11y-example/card',
+		'external-blocks-a11y-example/light-cards',
 		'check_heading',
 		array(
 			'error_msg'   => __( 'A heading is required for card blocks.', 'external-blocks-a11y-example' ),
@@ -35,7 +35,7 @@ function ba11y_external_block_register_accessibility_checks( $registry ) {
 
 	// Register check for required author name.
 	$registry->register_check(
-		'external-blocks-a11y-example/card',
+		'external-blocks-a11y-example/light-cards',
 		'check_link',
 		array(
 			'error_msg'   => __( 'Link is required for card blocks.', 'external-blocks-a11y-example' ),
@@ -48,7 +48,7 @@ function ba11y_external_block_register_accessibility_checks( $registry ) {
 
 	// Register check for required content.
 	$registry->register_check(
-		'external-blocks-a11y-example/card',
+		'external-blocks-a11y-example/light-cards',
 		'check_content',
 		array(
 			'error_msg'   => __( 'Card content is required.', 'external-blocks-a11y-example' ),

@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name:       External Blocks A11Y Example
- * Description:       An example block that demonstrates how to use the BA11Y accessibility integration.
+ * Plugin Name:       BA11Y Multi-Block Example
+ * Description:       An example of an external multi-block with accessibility & validation checks
  * Version:           1.0.0
  * Requires at least: 6.7
  * Requires PHP:      7.4
@@ -13,34 +13,29 @@
  * @package BA11Y_External_Block
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+if (! defined('ABSPATH') ) {
+    exit;
 }
 
-/**
- * Initializes the BA11Y External Block plugin.
- *
- * This function sets up the necessary hooks, actions, and filters required
- * for the plugin to function properly within WordPress.
- *
- * @since 1.0.0
- */
-function ba11y_external_block_init_plugin() {
-	if ( function_exists( 'wp_register_block_types_from_metadata_collection' ) ) {
-		wp_register_block_types_from_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
-		return;
-	}
-
-	if ( function_exists( 'wp_register_block_metadata_collection' ) ) {
-		wp_register_block_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
-	}
-
-	$manifest_data = include __DIR__ . '/build/blocks-manifest.php';
-	foreach ( array_keys( $manifest_data ) as $block_type ) {
-		register_block_type( __DIR__ . "/build/{$block_type}" );
-	}
+// Include Composer's autoload file.
+if ( file_exists( plugin_dir_path( __FILE__ ) . 'vendor/autoload.php' ) ) {
+    require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+} else {
+    wp_trigger_error( 'BA11Y Multi-Block Example Plugin: Composer autoload file not found. Please run `composer install`.', E_USER_ERROR );
+    return;
 }
-add_action( 'init', 'ba11y_external_block_init_plugin' );
+
+// Instantiate the classes.
+$ba11y_external_block_classes = array(
+    \BA11Y_External_Block\Plugin_Paths::class,
+    \BA11Y_External_Block\Register_Blocks::class,
+    \BA11Y_External_Block\Enqueues::class,
+    \BA11Y_External_Block\BlockChecksIntegration::class,
+);
+
+foreach ( $ba11y_external_block_classes as $ba11y_external_block_class ) {
+    new $ba11y_external_block_class();
+} 
 
 // Include accessibility integration.
-require_once plugin_dir_path( __FILE__ ) . 'includes/block-checks-integration.php';
+// require_once plugin_dir_path( __FILE__ ) . 'includes/block-checks-integration.php';
