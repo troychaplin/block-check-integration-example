@@ -3,7 +3,7 @@
         'name' => 'troychaplin/block-check-integration-example',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'bbf5061b9d76f5ca31fbdd76559f7b69c05f85eb',
+        'reference' => 'f3d2f96c31d143551b5156d2564d8ed9cdc7e896',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -49,7 +49,7 @@
         'troychaplin/block-check-integration-example' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'bbf5061b9d76f5ca31fbdd76559f7b69c05f85eb',
+            'reference' => 'f3d2f96c31d143551b5156d2564d8ed9cdc7e896',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
