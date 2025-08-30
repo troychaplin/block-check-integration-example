@@ -1,140 +1,200 @@
-# External Blocks A11Y Example
+# Block Check Integration Example
 
-This plugin demonstrates how to integrate custom WordPress blocks with the [Block Accessibility Checks](https://github.com/troychaplin/block-accessibility-checks) plugin using its developer API. It serves as a complete working example for developers who want to add accessibility validation to their custom blocks.
+A complete working example demonstrating how to integrate custom blocks with the [Block Accessibility Checks](https://wordpress.org/plugins/block-accessibility-checks/) plugin. This repository shows developers how to add accessibility and/or validation to their custom blocks using the Block Accessibility Checks Developer API.
 
 ## Overview
 
-The plugin includes a custom "Card" block that showcases the integration with Block Accessibility Checks. The block has three main fields (heading, content, and link) and demonstrates how to:
+This example plugin demonstrates:
 
-- Register accessibility checks for custom blocks
-- Implement JavaScript validation logic
-- Provide real-time feedback in the Gutenberg editor
-- Handle different types of validation (errors vs warnings)
+- **Custom Block Creation**: Two example blocks (Light Cards and Dark Cards) with accessibility-focused attributes
+- **Accessibility Check Registration**: PHP integration to register custom validation rules
+- **JavaScript Validation**: Real-time validation logic implemented in the block editor
+- **Settings Integration**: Automatic creation of admin settings pages for configuring validation levels
+- **Complete Build Process**: Webpack configuration and asset management
 
-## Features
+## What's Included
 
-- **Custom Card Block:** A fully functional block with heading, content, and link fields
-- **Accessibility Integration:** Complete integration with Block Accessibility Checks
-- **Real-time Validation:** Instant feedback as users edit block content
-- **Visual Indicators:** Error and warning states displayed in the editor
-- **Developer Reference:** Clean, well-documented code for learning purposes
+### Custom Blocks
 
-## Block Structure
+- **Light Cards Block** (`external-blocks-a11y-example/light-cards`)
+  - Heading field with configurable heading level
+  - Content field for testimonial text
+  - Link field for credibility/reference
+  - Accessibility checks for required fields
 
-The example card block includes configurable accessibility checks for each field:
+- **Dark Cards Block** (`external-blocks-a11y-example/dark-cards`)
+  - Similar structure to Light Cards with different styling
+  - Same accessibility validation rules
+  - Demonstrates multiple blocks with shared validation logic
 
-| Field | Type | Validation Check | Configurable Level |
-|-------|------|------------------|-------------------|
-| Heading | String | Heading attribute validation | Error/Warning/Disabled |
-| Content | String | Content attribute validation | Error/Warning/Disabled |
-| Link | String | Link attribute validation | Error/Warning/Disabled |
+### Accessibility Checks
 
-**Note:** All validation levels are user-controlled through the Block Accessibility Checks admin interface. Administrators can set each check to Error (blocks publishing), Warning (allows publishing with notification), or Disabled (no validation).
+The example implements three types of accessibility checks:
 
-## Installation
+1. **Heading Check** (`check_heading`)
+   - Validates that heading content exists when provided
+   - Category: `accessibility`
+   - Configurable via admin settings
 
-1. Install and activate the [Block Accessibility Checks](https://github.com/wordpress/block-accessibility-checks) plugin first
-2. Upload this plugin to `/wp-content/plugins/ba11y-external-block/`
-3. Activate the plugin through WordPress admin
-4. Start using the `External Block w/Checks` block in the Gutenberg editor
+2. **Content Check** (`check_content`)
+   - Ensures testimonial content is provided
+   - Category: `validation`
+   - Configurable via admin settings
 
-## Integration Guide
+3. **Link Check** (`check_link`)
+   - Validates that a reference link is provided
+   - Category: `validation` (Light Cards) / `accessibility` (Dark Cards)
+   - Configurable via admin settings
 
-This plugin demonstrates the complete integration process with Block Accessibility Checks:
+## Quick Start
 
-### 1. PHP Registration (`includes/block-checks-integration.php`)
+### Prerequisites
+
+- WordPress 6.7 or higher
+- PHP 7.4 or higher
+- [Block Accessibility Checks plugin](https://wordpress.org/plugins/block-accessibility-checks/) installed and activated
+- Node.js and npm for development
+
+### Installation
+
+1. **Clone or download this repository** to your WordPress plugins directory:
+   ```bash
+   cd wp-content/plugins/
+   git clone https://github.com/troychaplin/block-check-integration-example.git
+   ```
+
+2. **Activate the plugin** in WordPress admin
+
+3. **Configure the settings** in the submenu page of `Block Checks`
+
+## How It Works
+
+### 1. PHP Integration
+
+The plugin registers accessibility checks using the Block Accessibility Checks API:
 
 ```php
-function ba11y_external_block_register_accessibility_checks( $registry ) {
+// Functions/BlockChecksIntegration.php
+add_action( 'ba11yc_ready', array( $this, 'ba11y_external_block_light_cards_check' ) );
+
+public function ba11y_external_block_light_cards_check( $registry ) {
     $registry->register_check(
-        'external-blocks-a11y-example/card',
-        'check_content',
+        'external-blocks-a11y-example/light-cards',
+        'check_heading',
         array(
-            'error_msg'   => __( 'Card content is required.', 'external-blocks-a11y-example' ),
-            'warning_msg' => __( 'Card content is recommended.', 'external-blocks-a11y-example' ),
-            'description' => __( 'Content validation', 'external-blocks-a11y-example' ),
+            'error_msg'   => __( 'A heading is required for card blocks.', 'external-blocks-a11y-example' ),
+            'warning_msg' => __( 'Consider adding a heading for better accessibility.', 'external-blocks-a11y-example' ),
+            'description' => __( 'Card heading', 'external-blocks-a11y-example' ),
             'type'        => 'settings',
+            'category'    => 'accessibility',
         )
     );
 }
-
-add_action( 'ba11yc_ready', 'ba11y_external_block_register_accessibility_checks' );
 ```
 
-### 2. JavaScript Validation (`src/accessibility-checks.js`)
+### 2. JavaScript Validation
+
+Real-time validation is implemented using WordPress hooks:
 
 ```javascript
-import { addFilter } from '@wordpress/hooks';
-
+// src/scripts/light-cards-check.js
 addFilter(
     'ba11yc.validateBlock',
     'external-blocks-a11y-example/validation',
     (isValid, blockType, attributes, checkName) => {
-        if (blockType !== 'external-blocks-a11y-example/card') {
+        if (blockType !== 'external-blocks-a11y-example/light-cards') {
             return isValid;
         }
 
         switch (checkName) {
+            case 'check_heading':
+                return !!(attributes.heading && attributes.heading.trim());
             case 'check_content':
                 return !!(attributes.content && attributes.content.trim());
-            // ... other checks
+            case 'check_link':
+                return !!(attributes.link && attributes.link.trim());
+            default:
+                return isValid;
         }
     }
 );
 ```
 
-### 3. Asset Enqueuing (`includes/block-checks-integration.php`)
+### 3. Settings Integration
 
-```php
-function ba11y_external_block_enqueue_accessibility_assets() {
-    wp_enqueue_script(
-        'external-blocks-a11y-example',
-        plugins_url( 'build/accessibility-checks.js', __DIR__ ),
-        array( 'wp-hooks', 'wp-i18n', 'block-accessibility-script' ),
-        '1.0.0',
-        true
-    );
-}
+Checks registered with `'type' => 'settings'` automatically appear in the WordPress admin under **Block Checks → External Blocks A11Y Example**, allowing site administrators to:
 
-add_action( 'enqueue_block_editor_assets', 'ba11y_external_block_enqueue_accessibility_assets' );
+- Set validation levels (Error, Warning, Disabled) for each check
+- Enable/disable specific validation rules
+- Configure accessibility requirements per block type
+
+## File Structure
+
+```
+block-check-integration-example/
+├── Functions/
+│   ├── BlockChecksIntegration.php    # Accessibility check registration
+│   ├── Enqueues.php                  # Script/style enqueuing
+│   ├── Plugin_Paths.php              # Plugin path utilities
+│   └── Register_Blocks.php           # Block registration
+├── src/
+│   ├── blocks/
+│   │   ├── light-cards/              # Light Cards block
+│   │   └── dark-cards/               # Dark Cards block
+│   ├── scripts/
+│   │   ├── light-cards-check.js      # Light Cards validation
+│   │   └── dark-cards-check.js       # Dark Cards validation
+│   ├── editor-script.js              # Editor initialization
+│   └── frontend-script.js            # Frontend initialization
+├── build/                            # Compiled assets
+├── plugin.php                        # Main plugin file
+├── package.json                      # Node.js dependencies
+├── composer.json                     # PHP dependencies
+└── webpack.config.js                 # Build configuration
 ```
 
-## Key Integration Points
+## Key Features Demonstrated
 
-### Hook Registration
-- Uses `ba11yc_ready` action to register checks when Block Accessibility Checks is available
-- Registers multiple checks for different validation scenarios
+- **Real-time Validation**: Accessibility checks run as users edit content
+- **Visual Feedback**: Error/warning indicators in the block editor
+- **Publishing Control**: Error-level checks prevent publishing
+- **Flexible Configuration**: Admin settings for each validation rule
+- **Multiple Block Support**: Shared validation logic across block types
+- **Modern Build Process**: Webpack-based asset compilation
 
-### Validation Logic
-- Implements the `ba11yc.validateBlock` filter for JavaScript validation
-- Returns boolean values indicating validation status
-- Handles multiple check types within a single filter
+## Integration Points
 
-### Asset Management
-- Enqueues validation script in block editor context
-- Includes proper dependencies for WordPress hooks and Block Accessibility Checks
+This example demonstrates integration with the Block Accessibility Checks plugin through:
 
-## Testing the Integration
+- **Action Hooks**: `ba11yc_ready` for check registration
+- **Filter Hooks**: `ba11yc.validateBlock` for validation logic
+- **Registry API**: Programmatic check management
+- **Settings API**: Automatic admin interface generation
 
-1. **Add the Card Block:** Insert the "External Block w/Checks" block in the editor
-2. **Test Validation:** Try leaving fields empty or filling them with content
-3. **Observe Feedback:** Notice error indicators and inspector panel messages
-4. **Publishing Test:** Attempt to publish with validation errors (should be blocked)
+## Customization
 
-## Requirements
+To adapt this example for your own blocks:
 
-- WordPress 6.7 or higher
-- PHP 7.4 or higher
-- Block Accessibility Checks plugin (active)
-- Gutenberg block editor
+1. **Update block types** in `Functions/BlockChecksIntegration.php`
+2. **Modify validation logic** in `src/scripts/*-check.js`
+3. **Adjust block attributes** in `src/blocks/*/block.json`
+4. **Update text domain** and plugin information
+5. **Customize error messages** and validation rules
+
+## Support & Resources
+
+- **[Block Accessibility Checks Plugin](https://wordpress.org/plugins/block-accessibility-checks/)**: Main plugin documentation
+- **[Developer API Documentation](https://github.com/troychaplin/block-accessibility-checks/tree/main/docs)**: Complete API reference
+- **[Quick Start Guide](https://github.com/troychaplin/block-accessibility-checks/blob/main/docs/quick-start.md)**: Step-by-step integration guide
+
+## Contributing
+
+This example plugin is designed to help developers understand and implement accessibility validation. Contributions to improve the example or add new patterns are welcome!
 
 ## License
 
-This project is licensed under the GPL v2 or later - see the [LICENSE](LICENSE) file for details.
+This example plugin is licensed under the GPL v2 or later, matching the Block Accessibility Checks plugin license.
 
-## Related Resources
+---
 
-- [Block Accessibility Checks Plugin](https://github.com/wordpress/block-accessibility-checks)
-- [Developer API Documentation](https://github.com/troychaplin/block-accessibility-checks/tree/main/docs)
-- [WordPress Block Editor Handbook](https://developer.wordpress.org/block-editor/)
-- [WCAG Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+**Note**: This example requires the Block Accessibility Checks plugin to be installed and activated for full functionality.

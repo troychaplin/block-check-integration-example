@@ -1,31 +1,31 @@
 {
-	"name": "card-external-a11y-block",
-	"version": "0.1.0",
-	"description": "An example block that demonstrates how to use the BA11Y accessibility integration.",
+	"name": "external-blocks-a11y-example",
+	"version": "1.0.0",
+	"description": "An example of an external multi-block with accessibility & validation checks",
 	"author": "Troy Chaplin",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
-        "build": "wp-scripts build --blocks-manifest",
-		"start": "wp-scripts start --blocks-manifest",
-		"format": "npm run format:js && npm run format:php && npm run format:css",
-		"format:js": "wp-scripts lint-js --fix",
-		"format:php": "composer run format",
-		"format:css": "stylelint \"**/*.scss\" --fix",
+		"build": "wp-scripts build --experimental-modules --blocks-manifest",
 		"lint": "npm run lint:js && npm run lint:php && npm run lint:css",
-		"lint:js": "wp-scripts lint-js",
-		"lint:php": "composer run lint",
-		"lint:css": "stylelint \"**/*.scss\"",
+        "format": "npm run format:js && npm run format:php && npm run format:css",
+		"lint:css": "stylelint \"**/*.scss\" --max-warnings=0",
+        "format:css": "stylelint \"**/*.scss\" --fix",
+		"lint:js": "wp-scripts lint-js --max-warnings=0",
+		"format:js": "wp-scripts lint-js --fix",
+        "lint:php": "composer run lint",
+        "format:php": "./vendor/bin/phpcbf --standard=phpcs.xml.dist -v",
 		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts plugin-zip"
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start --experimental-modules --blocks-manifest"
 	},
 	"devDependencies": {
-        "@wordpress/i18n": "5.26.0",
-		"@wordpress/prettier-config": "4.26.0",
-		"@wordpress/scripts": "30.19.0",
-		"@wordpress/stylelint-config": "23.18.0",
-		"eslint-config-prettier": "10.1.5",
-		"stylelint": "16.21.1",
-		"stylelint-scss": "6.12.1"
+		"@wordpress/eslint-plugin": "^22.15.0",
+		"@wordpress/prettier-config": "^4.29.0",
+		"@wordpress/scripts": "^30.22.0",
+		"@wordpress/stylelint-config": "^23.21.0",
+		"eslint-config-prettier": "^10.1.8",
+		"stylelint": "^16.23.1",
+		"stylelint-scss": "^6.12.1"
 	}
 }
