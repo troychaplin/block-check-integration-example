@@ -25,8 +25,22 @@ class BlockChecksIntegration {
 	 * @return void
 	 */
 	public function __construct() {
-		add_action( 'ba11yc_ready', array( $this, 'ba11y_external_block_light_cards_check' ) );
-		add_action( 'ba11yc_ready', array( $this, 'ba11y_external_block_dark_cards_check' ) );
+		add_action( 'ba11yc_ready', array( $this, 'register_checks' ) );
+	}
+
+	/**
+	 * Register all checks for this plugin
+	 *
+	 * @param \BlockAccessibility\BlockChecksRegistry $registry The registry instance.
+	 *
+	 * @return void
+	 */
+	public function register_checks( $registry ) {
+		// Register checks for light cards
+		$this->register_light_cards_checks( $registry );
+		
+		// Register checks for dark cards
+		$this->register_dark_cards_checks( $registry );
 	}
 
 	/**
@@ -36,10 +50,9 @@ class BlockChecksIntegration {
 	 *
 	 * @return void
 	 */
-	public function ba11y_external_block_light_cards_check( $registry ) {
-		// Register check for heading.
-		$registry->register_check(
-			'external-blocks-a11y-example/light-cards',
+	private function register_light_cards_checks( $registry ) {
+		$registry->register_check_with_plugin_detection(
+			'ba11y-multi-block-example/light-cards',
 			'check_heading',
 			array(
 				'error_msg'   => __( 'A heading is required for card blocks.', 'external-blocks-a11y-example' ),
@@ -50,9 +63,8 @@ class BlockChecksIntegration {
 			)
 		);
 
-		// Register check for required author name.
-		$registry->register_check(
-			'external-blocks-a11y-example/light-cards',
+		$registry->register_check_with_plugin_detection(
+			'ba11y-multi-block-example/light-cards',
 			'check_link',
 			array(
 				'error_msg'   => __( 'Link is required for card blocks.', 'external-blocks-a11y-example' ),
@@ -63,9 +75,8 @@ class BlockChecksIntegration {
 			)
 		);
 
-		// Register check for required content.
-		$registry->register_check(
-			'external-blocks-a11y-example/light-cards',
+		$registry->register_check_with_plugin_detection(
+			'ba11y-multi-block-example/light-cards',
 			'check_content',
 			array(
 				'error_msg'   => __( 'Card content is required.', 'external-blocks-a11y-example' ),
@@ -84,10 +95,9 @@ class BlockChecksIntegration {
 	 *
 	 * @return void
 	 */
-	public function ba11y_external_block_dark_cards_check( $registry ) {
-		// Register check for heading.
-		$registry->register_check(
-			'external-blocks-a11y-example/dark-cards',
+	private function register_dark_cards_checks( $registry ) {
+		$registry->register_check_with_plugin_detection(
+			'ba11y-multi-block-example/dark-cards',
 			'check_heading',
 			array(
 				'error_msg'   => __( 'A heading is required for card blocks.', 'external-blocks-a11y-example' ),
@@ -98,9 +108,8 @@ class BlockChecksIntegration {
 			)
 		);
 
-		// Register check for required author name.
-		$registry->register_check(
-			'external-blocks-a11y-example/dark-cards',
+		$registry->register_check_with_plugin_detection(
+			'ba11y-multi-block-example/dark-cards',
 			'check_link',
 			array(
 				'error_msg'   => __( 'Link is required for card blocks.', 'external-blocks-a11y-example' ),
@@ -111,9 +120,8 @@ class BlockChecksIntegration {
 			)
 		);
 
-		// Register check for required content.
-		$registry->register_check(
-			'external-blocks-a11y-example/dark-cards',
+		$registry->register_check_with_plugin_detection(
+			'ba11y-multi-block-example/dark-cards',
 			'check_content',
 			array(
 				'error_msg'   => __( 'Card content is required.', 'external-blocks-a11y-example' ),

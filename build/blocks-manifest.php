@@ -4,7 +4,7 @@ return array(
 	'dark-cards' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'external-blocks-a11y-example/dark-cards',
+		'name' => 'ba11y-multi-block-example/dark-cards',
 		'version' => '1.0.0',
 		'title' => 'Dark Cards: External Block w/Checks',
 		'category' => 'text',
@@ -43,7 +43,7 @@ return array(
 	'light-cards' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'external-blocks-a11y-example/light-cards',
+		'name' => 'ba11y-multi-block-example/light-cards',
 		'version' => '1.0.0',
 		'title' => 'Light Cards: External Block w/Checks',
 		'category' => 'text',

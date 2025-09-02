@@ -12,10 +12,10 @@ import { addFilter } from '@wordpress/hooks';
  */
 addFilter(
 	'ba11yc.validateBlock',
-	'external-blocks-a11y-example/validation',
+	'ba11y-multi-block-example/validation',
 	(isValid, blockType, attributes, checkName) => {
 		// Only handle our block type
-		if (blockType !== 'external-blocks-a11y-example/dark-cards') {
+		if (blockType !== 'ba11y-multi-block-example/dark-cards') {
 			return isValid;
 		}
 

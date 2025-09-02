@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       BA11Y Multi-Block Example
  * Description:       An example of an external multi-block with accessibility & validation checks
- * Version:           1.0.0
+ * Version:           1.4.21
  * Requires at least: 6.7
  * Requires PHP:      7.4
  * Author:            Troy Chaplin
