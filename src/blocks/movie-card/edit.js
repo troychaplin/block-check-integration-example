@@ -86,9 +86,11 @@ export default function Edit({ attributes, setAttributes }) {
 				</HeadingTag>
 
 				{excerpt && <p>{excerpt}</p>}
+
 				{!excerpt && (
 					<p>{__('Add excerpt in the sidebar…', 'multi-block-checks-example')}</p>
 				)}
+
 				{link && (
 					<p>
 						<a href={link}>{link}</a>

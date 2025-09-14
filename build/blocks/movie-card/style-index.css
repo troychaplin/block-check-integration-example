@@ -5,13 +5,14 @@
   background-color: #fff;
   color: #2f2f2f;
   border: 1px solid #adadad;
-  padding: 24px 32px;
+  padding: 22px 30px 20px;
   border-radius: 8px;
 }
-.wp-block-multi-block-check-example-movie-card h2, .wp-block-multi-block-check-example-movie-card p {
+.wp-block-multi-block-check-example-movie-card h2, .wp-block-multi-block-check-example-movie-card h3, .wp-block-multi-block-check-example-movie-card h4, .wp-block-multi-block-check-example-movie-card p {
   margin: 0;
 }
-.wp-block-multi-block-check-example-movie-card h2 {
+.wp-block-multi-block-check-example-movie-card h2, .wp-block-multi-block-check-example-movie-card h3, .wp-block-multi-block-check-example-movie-card h4 {
+  font-size: var(--wp--preset--font-size--x-large);
   margin-bottom: 12px;
 }
 .wp-block-multi-block-check-example-movie-card p {
