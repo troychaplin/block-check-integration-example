@@ -64,7 +64,7 @@ return array(
 			'html' => false
 		),
 		'attributes' => array(
-			'heading' => array(
+			'headingText' => array(
 				'type' => 'string',
 				'default' => ''
 			),

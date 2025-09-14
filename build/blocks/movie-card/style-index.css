@@ -1,1 +1,21 @@
-.wp-block-multi-block-checks-movie-card{background-color:#fff;border:1px solid #d9d9d9;border-radius:5px;color:#2f2f2f;padding:12px 36px}
+/*!*********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/movie-card/style.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************/
+.wp-block-multi-block-check-example-movie-card {
+  background-color: #fff;
+  color: #2f2f2f;
+  border: 1px solid #adadad;
+  padding: 24px 32px;
+  border-radius: 8px;
+}
+.wp-block-multi-block-check-example-movie-card h2, .wp-block-multi-block-check-example-movie-card p {
+  margin: 0;
+}
+.wp-block-multi-block-check-example-movie-card h2 {
+  margin-bottom: 12px;
+}
+.wp-block-multi-block-check-example-movie-card p {
+  margin-bottom: 8px;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

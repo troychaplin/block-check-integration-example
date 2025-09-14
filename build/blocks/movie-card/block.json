@@ -12,7 +12,7 @@
     "html": false
   },
   "attributes": {
-    "heading": {
+    "headingText": {
       "type": "string",
       "default": ""
     },
