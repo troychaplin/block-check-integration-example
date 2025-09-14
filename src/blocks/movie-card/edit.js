@@ -3,7 +3,7 @@ import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextControl, SelectControl, TextareaControl } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
-	const { heading, headingLevel, link, content } = attributes;
+	const { heading, headingLevel, link, excerpt } = attributes;
 
 	const renderHeading = () => {
 		if (!heading) {
@@ -17,9 +17,7 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody
-					title={__('Example Card Block Settings', 'external-blocks-a11y-example')}
-				>
+				<PanelBody title={__('Example Card Block Settings', 'multi-block-checks-example')}>
 					<TextControl
 						label="Heading"
 						onChange={value => setAttributes({ heading: value })}
@@ -47,9 +45,9 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 					<TextareaControl
 						label="Content"
-						onChange={value => setAttributes({ content: value })}
-						value={content}
-						help="Enter the main content here"
+						onChange={value => setAttributes({ excerpt: value })}
+						value={excerpt}
+						help="Enter the main excerpt here"
 					/>
 					<TextControl
 						label="Source URL"
@@ -62,18 +60,14 @@ export default function Edit({ attributes, setAttributes }) {
 
 			<div {...useBlockProps()}>
 				{renderHeading()}
-				{content && <p>{content}</p>}
-				{!content && (
-					<p>{__('Add content in the sidebar…', 'external-blocks-a11y-example')}</p>
-				)}
+				{excerpt && <p>{excerpt}</p>}
+				{!excerpt && <p>{__('Add excerpt in the sidebar…', 'multi-block-checks-example')}</p>}
 				{link && (
 					<p>
 						<a href={link}>{link}</a>
 					</p>
 				)}
-				{!link && (
-					<p>{__('Add link name in the sidebar…', 'external-blocks-a11y-example')}</p>
-				)}
+				{!link && <p>{__('Add link name in the sidebar…', 'multi-block-checks-example')}</p>}
 			</div>
 		</>
 	);

@@ -4,10 +4,10 @@
  *
  * This class provides utility methods for retrieving the plugin's URL and path.
  *
- * @package BA11Y_External_Block
+ * @package Multi_Block_Checks
  */
 
-namespace BA11Y_External_Block;
+namespace Multi_Block_Checks;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

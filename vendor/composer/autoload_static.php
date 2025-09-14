@@ -11,9 +11,9 @@ class ComposerStaticInita653b42d75f2f0d5dfe91270208456f5
         array (
             'PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 57,
         ),
-        'B' => 
+        'M' => 
         array (
-            'BA11Y_External_Block\\' => 21,
+            'Multi_Block_Checks\\' => 19,
         ),
     );
 
@@ -22,7 +22,7 @@ class ComposerStaticInita653b42d75f2f0d5dfe91270208456f5
         array (
             0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
         ),
-        'BA11Y_External_Block\\' => 
+        'Multi_Block_Checks\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Functions',
         ),

@@ -12,10 +12,10 @@ import { addFilter } from '@wordpress/hooks';
  */
 addFilter(
 	'ba11yc.validateBlock',
-	'ba11y-multi-block-example/validation',
+	'multi-block-checks-example/validation',
 	(isValid, blockType, attributes, checkName) => {
-		// Only handle our block type
-		if (blockType !== 'ba11y-multi-block-example/dark-cards') {
+		// Only handle our block type - FIXED: match the PHP registration
+		if (blockType !== 'multi-block-check-example/movie-card') {
 			return isValid;
 		}
 
@@ -30,8 +30,8 @@ addFilter(
 				return true;
 
 			case 'check_content':
-				// Return true if valid, false if invalid
-				return !!(attributes.content && attributes.content.trim());
+				// FIXED: Use 'excerpt' attribute instead of 'content'
+				return !!(attributes.excerpt && attributes.excerpt.trim());
 
 			case 'check_link':
 				// Return true if valid, false if invalid

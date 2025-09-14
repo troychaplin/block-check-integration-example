@@ -1,7 +1,7 @@
 import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
-	const { heading, headingLevel, link, content } = attributes;
+	const { heading, headingLevel, link, excerpt } = attributes;
 
 	const renderHeading = () => {
 		if (!heading) {
@@ -15,7 +15,7 @@ export default function save({ attributes }) {
 	return (
 		<div {...useBlockProps.save()}>
 			{renderHeading()}
-			{content && <p>{content}</p>}
+			{excerpt && <p>{excerpt}</p>}
 			{link && (
 				<p>
 					<a href={link}>{link}</a>

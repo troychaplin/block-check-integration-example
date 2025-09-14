@@ -4,12 +4,12 @@
  *
  * This class is responsible for enqueuing the plugin's assets.
  *
- * @package BA11Y_External_Block
+ * @package Multi_Block_Checks
  */
 
-namespace BA11Y_External_Block;
+namespace Multi_Block_Checks;
 
-use BA11Y_External_Block\Plugin_Paths;
+use Multi_Block_Checks\Plugin_Paths;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

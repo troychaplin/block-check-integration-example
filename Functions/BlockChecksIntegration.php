@@ -4,10 +4,10 @@
  *
  * This class integrates with the Block Accessibility Checks plugin to register accessibility checks for custom blocks.
  *
- * @package BA11Y_External_Block
+ * @package Multi_Block_Checks
  */
 
-namespace BA11Y_External_Block;
+namespace Multi_Block_Checks;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -36,11 +36,8 @@ class BlockChecksIntegration {
 	 * @return void
 	 */
 	public function register_checks( $registry ) {
-		// Register checks for light cards
-		$this->register_light_cards_checks( $registry );
-		
-		// Register checks for dark cards
-		$this->register_dark_cards_checks( $registry );
+		$this->register_album_card_checks( $registry );
+		$this->register_movie_card_checks( $registry );
 	}
 
 	/**
@@ -50,38 +47,62 @@ class BlockChecksIntegration {
 	 *
 	 * @return void
 	 */
-	private function register_light_cards_checks( $registry ) {
+	private function register_album_card_checks( $registry ) {
 		$registry->register_check_with_plugin_detection(
-			'ba11y-multi-block-example/light-cards',
-			'check_heading',
+			'multi-block-check-example/album-card',
+			'check_album_card_heading',
 			array(
-				'error_msg'   => __( 'A heading is required for card blocks.', 'external-blocks-a11y-example' ),
-				'warning_msg' => __( 'Consider adding a heading for better accessibility.', 'external-blocks-a11y-example' ),
-				'description' => __( 'Card heading', 'external-blocks-a11y-example' ),
+				'error_msg'   => __( 'A heading is required for card blocks.', 'multi-block-checks-example' ),
+				'warning_msg' => __( 'Consider adding a heading for better accessibility.', 'multi-block-checks-example' ),
+				'description' => __( 'Card heading', 'multi-block-checks-example' ),
 				'type'        => 'settings',
 				'category'    => 'accessibility',
 			)
 		);
 
 		$registry->register_check_with_plugin_detection(
-			'ba11y-multi-block-example/light-cards',
-			'check_link',
+			'multi-block-check-example/album-card',
+			'check_album_release_date',
 			array(
-				'error_msg'   => __( 'Link is required for card blocks.', 'external-blocks-a11y-example' ),
-				'warning_msg' => __( 'Consider adding a link for better credibility.', 'external-blocks-a11y-example' ),
-				'description' => __( 'Card link', 'external-blocks-a11y-example' ),
+				'error_msg'   => __( 'Card content is required.', 'multi-block-checks-example' ),
+				'warning_msg' => __( 'Card content is recommended.', 'multi-block-checks-example' ),
+				'description' => __( 'Content', 'multi-block-checks-example' ),
 				'type'        => 'settings',
 				'category'    => 'validation',
 			)
 		);
 
 		$registry->register_check_with_plugin_detection(
-			'ba11y-multi-block-example/light-cards',
-			'check_content',
+			'multi-block-check-example/album-card',
+			'check_album_spotify_music',
 			array(
-				'error_msg'   => __( 'Card content is required.', 'external-blocks-a11y-example' ),
-				'warning_msg' => __( 'Card content is recommended.', 'external-blocks-a11y-example' ),
-				'description' => __( 'Content', 'external-blocks-a11y-example' ),
+				'error_msg'   => __( 'A Spotify URL is required for card blocks.', 'multi-block-checks-example' ),
+				'warning_msg' => __( 'Add a Spotify URL if one is available.', 'multi-block-checks-example' ),
+				'description' => __( 'Add a link to the Spotify URL.', 'multi-block-checks-example' ),
+				'type'        => 'settings',
+				'category'    => 'validation',
+			)
+		);
+
+		$registry->register_check_with_plugin_detection(
+			'multi-block-check-example/album-card',
+			'check_album_apple_music',
+			array(
+				'error_msg'   => __( 'An Apple Music URL is required for card blocks.', 'multi-block-checks-example' ),
+				'warning_msg' => __( 'Add an Apple Music URL if one is available.', 'multi-block-checks-example' ),
+				'description' => __( 'Add a link to the Apple Music URL', 'multi-block-checks-example' ),
+				'type'        => 'settings',
+				'category'    => 'validation',
+			)
+		);
+
+		$registry->register_check_with_plugin_detection(
+			'multi-block-check-example/album-card',
+			'check_album_youtube_music',
+			array(
+				'error_msg'   => __( 'A YouTube Music URL is required for card blocks.', 'multi-block-checks-example' ),
+				'warning_msg' => __( 'Add an YouTube Music URL if one is available.', 'multi-block-checks-example' ),
+				'description' => __( 'Add a link to the YouTube Music URL', 'multi-block-checks-example' ),
 				'type'        => 'settings',
 				'category'    => 'validation',
 			)
@@ -95,38 +116,38 @@ class BlockChecksIntegration {
 	 *
 	 * @return void
 	 */
-	private function register_dark_cards_checks( $registry ) {
+	private function register_movie_card_checks( $registry ) {
 		$registry->register_check_with_plugin_detection(
-			'ba11y-multi-block-example/dark-cards',
+			'multi-block-check-example/movie-card',
 			'check_heading',
 			array(
-				'error_msg'   => __( 'A heading is required for card blocks.', 'external-blocks-a11y-example' ),
-				'warning_msg' => __( 'Consider adding a heading for better accessibility.', 'external-blocks-a11y-example' ),
-				'description' => __( 'Card heading', 'external-blocks-a11y-example' ),
+				'error_msg'   => __( 'A heading is required for card blocks.', 'multi-block-checks-example' ),
+				'warning_msg' => __( 'Consider adding a heading for better accessibility.', 'multi-block-checks-example' ),
+				'description' => __( 'Card heading', 'multi-block-checks-example' ),
 				'type'        => 'settings',
 				'category'    => 'accessibility',
 			)
 		);
 
 		$registry->register_check_with_plugin_detection(
-			'ba11y-multi-block-example/dark-cards',
+			'multi-block-check-example/movie-card',
 			'check_link',
 			array(
-				'error_msg'   => __( 'Link is required for card blocks.', 'external-blocks-a11y-example' ),
-				'warning_msg' => __( 'Consider adding a link for better credibility.', 'external-blocks-a11y-example' ),
-				'description' => __( 'Card link', 'external-blocks-a11y-example' ),
+				'error_msg'   => __( 'Link is required for card blocks.', 'multi-block-checks-example' ),
+				'warning_msg' => __( 'Consider adding a link for better credibility.', 'multi-block-checks-example' ),
+				'description' => __( 'Card link', 'multi-block-checks-example' ),
 				'type'        => 'settings',
 				'category'    => 'accessibility',
 			)
 		);
 
 		$registry->register_check_with_plugin_detection(
-			'ba11y-multi-block-example/dark-cards',
+			'multi-block-check-example/movie-card',
 			'check_content',
 			array(
-				'error_msg'   => __( 'Card content is required.', 'external-blocks-a11y-example' ),
-				'warning_msg' => __( 'Card content is recommended.', 'external-blocks-a11y-example' ),
-				'description' => __( 'Content', 'external-blocks-a11y-example' ),
+				'error_msg'   => __( 'Card content is required.', 'multi-block-checks-example' ),
+				'warning_msg' => __( 'Card content is recommended.', 'multi-block-checks-example' ),
+				'description' => __( 'Content', 'multi-block-checks-example' ),
 				'type'        => 'settings',
 				'category'    => 'validation',
 			)

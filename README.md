@@ -16,13 +16,13 @@ This example plugin demonstrates:
 
 ### Custom Blocks
 
-- **Light Cards Block** (`external-blocks-a11y-example/light-cards`)
+- **Light Cards Block** (`multi-block-checks-example/light-cards`)
   - Heading field with configurable heading level
   - Content field for testimonial text
   - Link field for credibility/reference
   - Accessibility checks for required fields
 
-- **Dark Cards Block** (`external-blocks-a11y-example/dark-cards`)
+- **Dark Cards Block** (`multi-block-checks-example/dark-cards`)
   - Similar structure to Light Cards with different styling
   - Same accessibility validation rules
   - Demonstrates multiple blocks with shared validation logic
@@ -75,16 +75,16 @@ The plugin registers accessibility checks using the Block Accessibility Checks A
 
 ```php
 // Functions/BlockChecksIntegration.php
-add_action( 'ba11yc_ready', array( $this, 'ba11y_external_block_light_cards_check' ) );
+add_action( 'ba11yc_ready', array( $this, 'Multi_Block_Checks_light_cards_check' ) );
 
-public function ba11y_external_block_light_cards_check( $registry ) {
+public function Multi_Block_Checks_light_cards_check( $registry ) {
     $registry->register_check(
-        'external-blocks-a11y-example/light-cards',
+        'multi-block-checks-example/light-cards',
         'check_heading',
         array(
-            'error_msg'   => __( 'A heading is required for card blocks.', 'external-blocks-a11y-example' ),
-            'warning_msg' => __( 'Consider adding a heading for better accessibility.', 'external-blocks-a11y-example' ),
-            'description' => __( 'Card heading', 'external-blocks-a11y-example' ),
+            'error_msg'   => __( 'A heading is required for card blocks.', 'multi-block-checks-example' ),
+            'warning_msg' => __( 'Consider adding a heading for better accessibility.', 'multi-block-checks-example' ),
+            'description' => __( 'Card heading', 'multi-block-checks-example' ),
             'type'        => 'settings',
             'category'    => 'accessibility',
         )
@@ -100,9 +100,9 @@ Real-time validation is implemented using WordPress hooks:
 // src/scripts/light-cards-check.js
 addFilter(
     'ba11yc.validateBlock',
-    'external-blocks-a11y-example/validation',
+    'multi-block-checks-example/validation',
     (isValid, blockType, attributes, checkName) => {
-        if (blockType !== 'external-blocks-a11y-example/light-cards') {
+        if (blockType !== 'multi-block-checks-example/light-cards') {
             return isValid;
         }
 

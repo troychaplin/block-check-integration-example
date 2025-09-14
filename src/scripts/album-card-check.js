@@ -12,16 +12,16 @@ import { addFilter } from '@wordpress/hooks';
  */
 addFilter(
 	'ba11yc.validateBlock',
-	'ba11y-multi-block-example/validation',
+	'multi-block-checks-example/validation',
 	(isValid, blockType, attributes, checkName) => {
-		// Only handle our block type
-		if (blockType !== 'ba11y-multi-block-example/light-cards') {
+		// Only handle our block type - FIXED: match the PHP registration
+		if (blockType !== 'multi-block-check-example/album-card') {
 			return isValid;
 		}
 
 		// Run validation based on check name
 		switch (checkName) {
-			case 'check_heading':
+			case 'check_album_card_heading':
 				// If heading exists, it should have content
 				if (attributes.heading !== undefined && attributes.heading !== null) {
 					return !!(attributes.heading && attributes.heading.trim());
@@ -29,13 +29,21 @@ addFilter(
 				// No heading is fine (valid)
 				return true;
 
-			case 'check_content':
+			case 'check_album_release_date':
 				// Return true if valid, false if invalid
-				return !!(attributes.content && attributes.content.trim());
+				return !!(attributes.releaseDate && attributes.releaseDate.trim());
 
-			case 'check_link':
+			case 'check_album_spotify_music':
 				// Return true if valid, false if invalid
-				return !!(attributes.link && attributes.link.trim());
+				return !!(attributes.spotifyMusic && attributes.spotifyMusic.trim());
+
+			case 'check_album_apple_music':
+				// Return true if valid, false if invalid
+				return !!(attributes.appleMusic && attributes.appleMusic.trim());
+
+			case 'check_album_youtube_music':
+				// Return true if valid, false if invalid
+				return !!(attributes.youtubeMusic && attributes.youtubeMusic.trim());
 
 			default:
 				// Unknown check, let other filters handle it

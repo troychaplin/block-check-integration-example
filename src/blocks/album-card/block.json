@@ -1,12 +1,12 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "ba11y-multi-block-example/dark-cards",
+	"name": "multi-block-check-example/album-card",
 	"version": "1.0.0",
-	"title": "Dark Cards: External Block w/Checks",
+	"title": "Album Card",
 	"category": "text",
 	"icon": "universal-access",
-	"description": "An example block for displaying testimonials with accessibility checks in place.",
+	"description": "An example block for displaying album cards with accessibility checks in place.",
 	"example": {},
 	"supports": {
 		"html": false
@@ -20,16 +20,24 @@
 			"type": "number",
 			"default": 2
 		},
-		"link": {
+		"releaseDate": {
 			"type": "string",
 			"default": ""
 		},
-		"content": {
+		"spotifyMusic": {
+			"type": "string",
+			"default": ""
+		},
+		"appleMusic": {
+			"type": "string",
+			"default": ""
+		},
+		"youtubeMusic": {
 			"type": "string",
 			"default": ""
 		}
 	},
-	"textdomain": "external-blocks-a11y-example",
+	"textdomain": "multi-block-checks-example",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
