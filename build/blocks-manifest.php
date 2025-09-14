@@ -72,7 +72,11 @@ return array(
 				'type' => 'number',
 				'default' => 2
 			),
-			'link' => array(
+			'sourceUrl' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'releaseDate' => array(
 				'type' => 'string',
 				'default' => ''
 			),

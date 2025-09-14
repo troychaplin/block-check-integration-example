@@ -2,6 +2,37 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@wordpress/icons/build-module/library/calendar.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/calendar.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
+/**
+ * WordPress dependencies
+ */
+
+
+const calendar = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__.SVG, {
+  viewBox: "0 0 24 24",
+  xmlns: "http://www.w3.org/2000/svg",
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__.Path, {
+    d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm.5 16c0 .3-.2.5-.5.5H5c-.3 0-.5-.2-.5-.5V7h15v12zM9 10H7v2h2v-2zm0 4H7v2h2v-2zm4-4h-2v2h2v-2zm4 0h-2v2h2v-2zm-4 4h-2v2h2v-2zm4 0h-2v2h2v-2z"
+  })
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (calendar);
+//# sourceMappingURL=calendar.js.map
+
+/***/ }),
+
 /***/ "./node_modules/@wordpress/icons/build-module/library/heading-level-2.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/@wordpress/icons/build-module/library/heading-level-2.js ***!
@@ -163,7 +194,7 @@ const link = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)
   \******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"multi-block-check-example/movie-card","version":"1.0.0","title":"Movie Card","category":"text","icon":"universal-access","description":"An example block for displaying movie cards with accessibility checks in place.","example":{},"supports":{"html":false},"attributes":{"headingText":{"type":"string","default":""},"headingLevel":{"type":"number","default":2},"link":{"type":"string","default":""},"excerpt":{"type":"string","default":""}},"textdomain":"multi-block-checks-example","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"multi-block-check-example/movie-card","version":"1.0.0","title":"Movie Card","category":"text","icon":"universal-access","description":"An example block for displaying movie cards with accessibility checks in place.","example":{},"supports":{"html":false},"attributes":{"headingText":{"type":"string","default":""},"headingLevel":{"type":"number","default":2},"sourceUrl":{"type":"string","default":""},"releaseDate":{"type":"string","default":""},"excerpt":{"type":"string","default":""}},"textdomain":"multi-block-checks-example","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ }),
 
@@ -183,15 +214,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/heading-level-2.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/heading-level-3.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/heading-level-4.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/heading.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/link.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/calendar.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/heading-level-2.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/heading-level-3.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/heading-level-4.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/heading.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/link.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__);
 
 
 
@@ -206,10 +238,102 @@ function Edit({
     headingText,
     headingLevel,
     sourceUrl,
+    releaseDate,
     excerpt
   } = attributes;
   const HeadingTag = `h${headingLevel || 2}`;
-  const [isLinkOpen, setIsLinkOpen] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_8__.useState)(false);
+  const [isLinkOpen, setIsLinkOpen] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_9__.useState)(false);
+  const [isDateOpen, setIsDateOpen] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_9__.useState)(false);
+  const [selectedMonth, setSelectedMonth] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_9__.useState)('');
+  const [selectedYear, setSelectedYear] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_9__.useState)('');
+  const [selectedDay, setSelectedDay] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_9__.useState)('');
+  const formatDate = dateString => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    const month = date.toLocaleDateString('en-US', {
+      month: 'long'
+    });
+    const day = date.getDate();
+    const year = date.getFullYear();
+
+    // Add ordinal suffix (st, nd, rd, th)
+    const getOrdinalSuffix = num => {
+      const lastDigit = num % 10;
+      const lastTwoDigits = num % 100;
+      if (lastTwoDigits >= 11 && lastTwoDigits <= 13) {
+        return 'th';
+      }
+      switch (lastDigit) {
+        case 1:
+          return 'st';
+        case 2:
+          return 'nd';
+        case 3:
+          return 'rd';
+        default:
+          return 'th';
+      }
+    };
+    return `${month} ${day}${getOrdinalSuffix(day)}, ${year}`;
+  };
+
+  // Generate month options
+  const monthOptions = [{
+    label: 'January',
+    value: '01'
+  }, {
+    label: 'February',
+    value: '02'
+  }, {
+    label: 'March',
+    value: '03'
+  }, {
+    label: 'April',
+    value: '04'
+  }, {
+    label: 'May',
+    value: '05'
+  }, {
+    label: 'June',
+    value: '06'
+  }, {
+    label: 'July',
+    value: '07'
+  }, {
+    label: 'August',
+    value: '08'
+  }, {
+    label: 'September',
+    value: '09'
+  }, {
+    label: 'October',
+    value: '10'
+  }, {
+    label: 'November',
+    value: '11'
+  }, {
+    label: 'December',
+    value: '12'
+  }];
+
+  // Generate year options (1900 to current year)
+  const currentYear = new Date().getFullYear();
+  const yearOptions = [];
+  for (let year = currentYear; year >= 1900; year--) {
+    yearOptions.push({
+      label: year.toString(),
+      value: year.toString()
+    });
+  }
+
+  // Generate day options (1-31)
+  const dayOptions = [];
+  for (let day = 1; day <= 31; day++) {
+    dayOptions.push({
+      label: day.toString(),
+      value: day.toString().padStart(2, '0')
+    });
+  }
   const linkSettings = {
     url: sourceUrl,
     opensInNewTab: true
@@ -219,7 +343,22 @@ function Edit({
       sourceUrl: value.url || ''
     });
   };
-  const HeadingRichText = () => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  const onDateChange = date => {
+    setAttributes({
+      releaseDate: date || ''
+    });
+    setIsDateOpen(false);
+  };
+  const onCustomDateChange = () => {
+    if (selectedMonth && selectedYear && selectedDay) {
+      const date = `${selectedYear}-${selectedMonth}-${selectedDay}`;
+      setAttributes({
+        releaseDate: date
+      });
+      setIsDateOpen(false);
+    }
+  };
+  const HeadingRichText = () => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: HeadingTag,
     placeholder: "Add a movie title...",
     onChange: value => setAttributes({
@@ -228,44 +367,44 @@ function Edit({
     value: headingText || '',
     allowedFormats: []
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarGroup, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarDropdownMenu, {
-          icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarGroup, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarDropdownMenu, {
+          icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Change heading level', 'multi-block-checks-example'),
           controls: [{
             title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Heading 2', 'multi-block-checks-example'),
-            icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["default"],
+            icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"],
             onClick: () => setAttributes({
               headingLevel: 2
             }),
             isActive: headingLevel === 2
           }, {
             title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Heading 3', 'multi-block-checks-example'),
-            icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"],
+            icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
             onClick: () => setAttributes({
               headingLevel: 3
             }),
             isActive: headingLevel === 3
           }, {
             title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Heading 4', 'multi-block-checks-example'),
-            icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
+            icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
             onClick: () => setAttributes({
               headingLevel: 4
             }),
             isActive: headingLevel === 4
           }]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
-          icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
+          icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["default"],
           label: sourceUrl ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Edit link', 'multi-block-checks-example') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Add link', 'multi-block-checks-example'),
           onClick: () => setIsLinkOpen(true),
           isPressed: !!sourceUrl,
           showTooltip: true
-        }), isLinkOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Popover, {
+        }), isLinkOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Popover, {
           position: "bottom center",
           onClose: () => setIsLinkOpen(false),
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.__experimentalLinkControl, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.__experimentalLinkControl, {
             value: linkSettings,
             onChange: onLinkChange,
             onRemove: () => {
@@ -275,16 +414,114 @@ function Edit({
               setIsLinkOpen(false);
             }
           })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
+          icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["default"],
+          label: releaseDate ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Edit release date', 'multi-block-checks-example') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Add release date', 'multi-block-checks-example'),
+          onClick: () => setIsDateOpen(true),
+          isPressed: !!releaseDate,
+          showTooltip: true
+        }), isDateOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Popover, {
+          position: "bottom center",
+          onClose: () => setIsDateOpen(false),
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+            style: {
+              padding: '16px',
+              minWidth: '280px'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h4", {
+              style: {
+                margin: '0 0 16px 0',
+                fontSize: '14px',
+                fontWeight: '600'
+              },
+              children: "Select Release Date"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              style: {
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr 1fr',
+                gap: '12px',
+                marginBottom: '16px'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+                  label: "Month",
+                  value: selectedMonth,
+                  options: [{
+                    label: 'Month',
+                    value: ''
+                  }, ...monthOptions],
+                  onChange: setSelectedMonth,
+                  __nextHasNoMarginBottom: true
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+                  label: "Day",
+                  value: selectedDay,
+                  options: [{
+                    label: 'Day',
+                    value: ''
+                  }, ...dayOptions],
+                  onChange: setSelectedDay,
+                  __nextHasNoMarginBottom: true
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+                  label: "Year",
+                  value: selectedYear,
+                  options: [{
+                    label: 'Year',
+                    value: ''
+                  }, ...yearOptions],
+                  onChange: setSelectedYear,
+                  __nextHasNoMarginBottom: true
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              style: {
+                display: 'flex',
+                gap: '8px',
+                justifyContent: 'flex-end'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+                onClick: () => setIsDateOpen(false),
+                style: {
+                  padding: '6px 12px',
+                  backgroundColor: 'transparent',
+                  color: '#646970',
+                  border: '1px solid #dcdcde',
+                  borderRadius: '3px',
+                  cursor: 'pointer',
+                  fontSize: '13px'
+                },
+                children: "Cancel"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+                onClick: onCustomDateChange,
+                disabled: !selectedMonth || !selectedYear || !selectedDay,
+                style: {
+                  padding: '6px 12px',
+                  backgroundColor: selectedMonth && selectedYear && selectedDay ? '#007cba' : '#f0f0f1',
+                  color: selectedMonth && selectedYear && selectedDay ? 'white' : '#a7aaad',
+                  border: 'none',
+                  borderRadius: '3px',
+                  cursor: selectedMonth && selectedYear && selectedDay ? 'pointer' : 'not-allowed',
+                  fontSize: '13px'
+                },
+                children: "Set Date"
+              })]
+            })]
+          })
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-      children: [sourceUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("a", {
+      children: [sourceUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("a", {
         href: sourceUrl,
         target: "_blank",
         rel: "noopener noreferrer",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(HeadingRichText, {})
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(HeadingRichText, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(HeadingRichText, {})
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(HeadingRichText, {}), releaseDate && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("p", {
+        children: ["Release Date: ", formatDate(releaseDate)]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
         tagName: "p",
         placeholder: `Add a short description of the movie.`,
         onChange: value => setAttributes({

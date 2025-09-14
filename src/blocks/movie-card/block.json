@@ -20,7 +20,11 @@
 			"type": "number",
 			"default": 2
 		},
-		"link": {
+        "sourceUrl": {
+            "type": "string",
+            "default": ""
+        },
+		"releaseDate": {
 			"type": "string",
 			"default": ""
 		},
