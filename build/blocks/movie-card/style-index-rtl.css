@@ -12,7 +12,7 @@
   margin: 0;
 }
 .wp-block-multi-block-check-example-movie-card h2, .wp-block-multi-block-check-example-movie-card h3, .wp-block-multi-block-check-example-movie-card h4 {
-  font-size: var(--wp--preset--font-size--x-large);
+  font-size: var(--wp--preset--font-size--large);
   margin-bottom: 12px;
 }
 .wp-block-multi-block-check-example-movie-card p {

@@ -1,22 +1,38 @@
 import { __ } from '@wordpress/i18n';
 import {
 	useBlockProps,
-	InspectorControls,
 	BlockControls,
-	PlainText,
+	RichText,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	__experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
-import {
-	PanelBody,
-	TextControl,
-	TextareaControl,
-	ToolbarGroup,
-	ToolbarDropdownMenu,
-} from '@wordpress/components';
-import { heading, headingLevel2, headingLevel3, headingLevel4 } from '@wordpress/icons';
+import { ToolbarGroup, ToolbarDropdownMenu, ToolbarButton, Popover } from '@wordpress/components';
+import { heading, headingLevel2, headingLevel3, headingLevel4, link } from '@wordpress/icons';
+import { useState } from '@wordpress/element';
 
 export default function Edit({ attributes, setAttributes }) {
-	const { headingText, headingLevel, link, excerpt } = attributes;
+	const { headingText, headingLevel, sourceUrl, excerpt } = attributes;
 	const HeadingTag = `h${headingLevel || 2}`;
+	const [isLinkOpen, setIsLinkOpen] = useState(false);
+
+	const linkSettings = {
+		url: sourceUrl,
+		opensInNewTab: true,
+	};
+
+	const onLinkChange = value => {
+		setAttributes({ sourceUrl: value.url || '' });
+	};
+
+	const HeadingRichText = () => (
+		<RichText
+			tagName={HeadingTag}
+			placeholder="Add a movie title..."
+			onChange={value => setAttributes({ headingText: value })}
+			value={headingText || ''}
+			allowedFormats={[]}
+		/>
+	);
 
 	return (
 		<>
@@ -46,59 +62,48 @@ export default function Edit({ attributes, setAttributes }) {
 							},
 						]}
 					/>
+					<ToolbarButton
+						icon={link}
+						label={
+							sourceUrl
+								? __('Edit link', 'multi-block-checks-example')
+								: __('Add link', 'multi-block-checks-example')
+						}
+						onClick={() => setIsLinkOpen(true)}
+						isPressed={!!sourceUrl}
+						showTooltip
+					/>
+					{isLinkOpen && (
+						<Popover position="bottom center" onClose={() => setIsLinkOpen(false)}>
+							<LinkControl
+								value={linkSettings}
+								onChange={onLinkChange}
+								onRemove={() => {
+									setAttributes({ sourceUrl: '' });
+									setIsLinkOpen(false);
+								}}
+							/>
+						</Popover>
+					)}
 				</ToolbarGroup>
 			</BlockControls>
 
-			<InspectorControls>
-				<PanelBody title={__('Example Card Block Settings', 'multi-block-checks-example')}>
-					<TextareaControl
-						label="Content"
-						onChange={value => setAttributes({ excerpt: value })}
-						value={excerpt}
-						help="Enter the main excerpt here"
-					/>
-					<TextControl
-						label="Source URL"
-						onChange={value => setAttributes({ link: value })}
-						type="text"
-						value={link}
-					/>
-				</PanelBody>
-			</InspectorControls>
-
 			<div {...useBlockProps()}>
-				<HeadingTag>
-					<PlainText
-						placeholder="Add a movie title..."
-						style={{
-							border: 'none',
-							padding: '0',
-							margin: '0',
-							backgroundColor: 'transparent',
-							resize: 'none',
-							fontSize: 'inherit',
-							fontWeight: 'inherit',
-							lineHeight: 'inherit',
-						}}
-						onChange={value => setAttributes({ headingText: value })}
-						value={headingText || ''}
-					/>
-				</HeadingTag>
-
-				{excerpt && <p>{excerpt}</p>}
-
-				{!excerpt && (
-					<p>{__('Add excerpt in the sidebar…', 'multi-block-checks-example')}</p>
+				{sourceUrl ? (
+					<a href={sourceUrl} target="_blank" rel="noopener noreferrer">
+						<HeadingRichText />
+					</a>
+				) : (
+					<HeadingRichText />
 				)}
-
-				{link && (
-					<p>
-						<a href={link}>{link}</a>
-					</p>
-				)}
-				{!link && (
-					<p>{__('Add link name in the sidebar…', 'multi-block-checks-example')}</p>
-				)}
+				<RichText
+					tagName="p"
+					placeholder={`Add a short description of the movie.`}
+					onChange={value => setAttributes({ excerpt: value })}
+					value={excerpt}
+					allowedFormats={['core/bold', 'core/italic']}
+					disableLineBreaks={true}
+				/>
 			</div>
 		</>
 	);
