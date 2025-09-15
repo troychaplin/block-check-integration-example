@@ -22,11 +22,12 @@ addFilter(
 		// Run validation based on check name
 		switch (checkName) {
 			case 'check_album_heading_text':
-				// If heading exists, it should have content; no heading is also valid
-				return (
-					!attributes.headingText ||
-					!!(attributes.headingText && attributes.headingText.trim())
-				);
+				// If heading exists, it should have content
+				if (attributes.headingText !== undefined && attributes.headingText !== null) {
+					return !!(attributes.headingText && attributes.headingText.trim());
+				}
+				// No heading is fine (valid)
+				return true;
 
 			case 'check_album_release_date':
 				// Return true if valid, false if invalid
