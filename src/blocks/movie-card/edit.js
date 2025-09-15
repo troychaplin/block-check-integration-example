@@ -80,6 +80,7 @@ export default function Edit({ attributes, setAttributes }) {
 								: __('Add link', 'multi-block-checks-example')
 						}
 						onClick={() => setIsLinkOpen(true)}
+						isPressed={!!sourceUrl}
 						showTooltip
 					/>
 					{isLinkOpen && (
@@ -102,6 +103,7 @@ export default function Edit({ attributes, setAttributes }) {
 								: __('Add release date', 'multi-block-checks-example')
 						}
 						onClick={() => setIsDateOpen(true)}
+						isPressed={!!releaseDate}
 						showTooltip
 					/>
 					<DateSelector
@@ -141,11 +143,7 @@ export default function Edit({ attributes, setAttributes }) {
 							allowedFormats={[]}
 						/>
 					)}
-					{releaseDate && (
-						<p className="release-date">
-							Release Date: {formatDate(releaseDate)}
-						</p>
-					)}
+					{releaseDate && <p>Release Date: {formatDate(releaseDate)}</p>}
 					<RichText
 						tagName="p"
 						placeholder={`Add a short description of the movie.`}

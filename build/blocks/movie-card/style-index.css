@@ -16,7 +16,8 @@
   margin-bottom: 18px;
 }
 .wp-block-multi-block-check-example-movie-card div .release-date {
-  font-size: var(--wp--preset--font-size--small);
+  font-size: var(--wp--preset--font-size--medium);
+  font-style: italic;
 }
 .wp-block-multi-block-check-example-movie-card div p {
   font-size: var(--wp--preset--font-size--medium);

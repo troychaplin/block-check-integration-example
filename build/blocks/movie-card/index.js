@@ -364,6 +364,7 @@ function Edit({
           icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"],
           label: sourceUrl ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Edit link', 'multi-block-checks-example') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add link', 'multi-block-checks-example'),
           onClick: () => setIsLinkOpen(true),
+          isPressed: !!sourceUrl,
           showTooltip: true
         }), isLinkOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Popover, {
           position: "bottom center",
@@ -382,6 +383,7 @@ function Edit({
           icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["default"],
           label: releaseDate ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Edit release date', 'multi-block-checks-example') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add release date', 'multi-block-checks-example'),
           onClick: () => setIsDateOpen(true),
+          isPressed: !!releaseDate,
           showTooltip: true
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_scripts_helpers_date_selector__WEBPACK_IMPORTED_MODULE_6__.DateSelector, {
           isOpen: isDateOpen,
@@ -422,7 +424,6 @@ function Edit({
           value: headingText || '',
           allowedFormats: []
         }), releaseDate && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("p", {
-          className: "release-date",
           children: ["Release Date: ", (0,_scripts_helpers_date_selector__WEBPACK_IMPORTED_MODULE_6__.formatDate)(releaseDate)]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
           tagName: "p",
