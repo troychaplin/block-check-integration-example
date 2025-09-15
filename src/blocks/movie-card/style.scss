@@ -1,8 +1,8 @@
-.wp-block-multi-block-check-example-movie-card {
+.wp-block-multi-block-check-example-movie-card div {
 	background-color: #fff;
 	color: #2f2f2f;
     border: 1px solid #adadad;
-	padding: 22px 30px 20px;
+	padding: 28px 36px;
     border-radius: 8px;
 
     h2, h3, h4, p {
@@ -10,11 +10,11 @@
     }
 
     h2, h3, h4 {
-        font-size: var(--wp--preset--font-size--large);
-        margin-bottom: 12px;
+        font-size: var(--wp--preset--font-size--x-large);
+        margin-bottom: 18px;
     }
     
-    p {
-        margin-bottom: 8px;
+    p:not(:last-child) {
+        margin-bottom: 12px;
     }
 }

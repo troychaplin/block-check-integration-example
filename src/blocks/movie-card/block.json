@@ -28,7 +28,7 @@
 			"type": "string",
 			"default": ""
 		},
-		"excerpt": {
+		"description": {
 			"type": "string",
 			"default": ""
 		}

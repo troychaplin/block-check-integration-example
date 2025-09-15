@@ -6,12 +6,25 @@ import {
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
-import { ToolbarGroup, ToolbarDropdownMenu, ToolbarButton, Popover, SelectControl } from '@wordpress/components';
-import { heading, headingLevel2, headingLevel3, headingLevel4, link, calendar } from '@wordpress/icons';
+import {
+	ToolbarGroup,
+	ToolbarDropdownMenu,
+	ToolbarButton,
+	Popover,
+	SelectControl,
+} from '@wordpress/components';
+import {
+	heading,
+	headingLevel2,
+	headingLevel3,
+	headingLevel4,
+	link,
+	calendar,
+} from '@wordpress/icons';
 import { useState } from '@wordpress/element';
 
 export default function Edit({ attributes, setAttributes }) {
-	const { headingText, headingLevel, sourceUrl, releaseDate, excerpt } = attributes;
+	const { headingText, headingLevel, sourceUrl, releaseDate, description } = attributes;
 	const HeadingTag = `h${headingLevel || 2}`;
 	const [isLinkOpen, setIsLinkOpen] = useState(false);
 	const [isDateOpen, setIsDateOpen] = useState(false);
@@ -20,30 +33,36 @@ export default function Edit({ attributes, setAttributes }) {
 	const [selectedDay, setSelectedDay] = useState('');
 
 	const formatDate = dateString => {
-		if (!dateString) return '';
-		
+		if (!dateString) {
+			return '';
+		}
+
 		const date = new Date(dateString);
 		const month = date.toLocaleDateString('en-US', { month: 'long' });
 		const day = date.getDate();
 		const year = date.getFullYear();
-		
+
 		// Add ordinal suffix (st, nd, rd, th)
 		const getOrdinalSuffix = num => {
 			const lastDigit = num % 10;
 			const lastTwoDigits = num % 100;
-			
+
 			if (lastTwoDigits >= 11 && lastTwoDigits <= 13) {
 				return 'th';
 			}
-			
+
 			switch (lastDigit) {
-				case 1: return 'st';
-				case 2: return 'nd';
-				case 3: return 'rd';
-				default: return 'th';
+				case 1:
+					return 'st';
+				case 2:
+					return 'nd';
+				case 3:
+					return 'rd';
+				default:
+					return 'th';
 			}
 		};
-		
+
 		return `${month} ${day}${getOrdinalSuffix(day)}, ${year}`;
 	};
 
@@ -76,7 +95,6 @@ export default function Edit({ attributes, setAttributes }) {
 		dayOptions.push({ label: day.toString(), value: day.toString().padStart(2, '0') });
 	}
 
-
 	const linkSettings = {
 		url: sourceUrl,
 		opensInNewTab: true,
@@ -86,11 +104,6 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ sourceUrl: value.url || '' });
 	};
 
-	const onDateChange = date => {
-		setAttributes({ releaseDate: date || '' });
-		setIsDateOpen(false);
-	};
-
 	const onCustomDateChange = () => {
 		if (selectedMonth && selectedYear && selectedDay) {
 			const date = `${selectedYear}-${selectedMonth}-${selectedDay}`;
@@ -98,16 +111,6 @@ export default function Edit({ attributes, setAttributes }) {
 			setIsDateOpen(false);
 		}
 	};
-
-	const HeadingRichText = () => (
-		<RichText
-			tagName={HeadingTag}
-			placeholder="Add a movie title..."
-			onChange={value => setAttributes({ headingText: value })}
-			value={headingText || ''}
-			allowedFormats={[]}
-		/>
-	);
 
 	return (
 		<>
@@ -162,7 +165,11 @@ export default function Edit({ attributes, setAttributes }) {
 					)}
 					<ToolbarButton
 						icon={calendar}
-						label={releaseDate ? __('Edit release date', 'multi-block-checks-example') : __('Add release date', 'multi-block-checks-example')}
+						label={
+							releaseDate
+								? __('Edit release date', 'multi-block-checks-example')
+								: __('Add release date', 'multi-block-checks-example')
+						}
 						onClick={() => setIsDateOpen(true)}
 						isPressed={!!releaseDate}
 						showTooltip
@@ -170,14 +177,32 @@ export default function Edit({ attributes, setAttributes }) {
 					{isDateOpen && (
 						<Popover position="bottom center" onClose={() => setIsDateOpen(false)}>
 							<div style={{ padding: '16px', minWidth: '280px' }}>
-								<h4 style={{ margin: '0 0 16px 0', fontSize: '14px', fontWeight: '600' }}>Select Release Date</h4>
-								
-								<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px', marginBottom: '16px' }}>
+								<h4
+									style={{
+										margin: '0 0 16px 0',
+										fontSize: '14px',
+										fontWeight: '600',
+									}}
+								>
+									Select Release Date
+								</h4>
+
+								<div
+									style={{
+										display: 'grid',
+										gridTemplateColumns: '1fr 1fr 1fr',
+										gap: '12px',
+										marginBottom: '16px',
+									}}
+								>
 									<div>
 										<SelectControl
 											label="Month"
 											value={selectedMonth}
-											options={[{ label: 'Month', value: '' }, ...monthOptions]}
+											options={[
+												{ label: 'Month', value: '' },
+												...monthOptions,
+											]}
 											onChange={setSelectedMonth}
 											__nextHasNoMarginBottom
 										/>
@@ -202,7 +227,13 @@ export default function Edit({ attributes, setAttributes }) {
 									</div>
 								</div>
 
-								<div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+								<div
+									style={{
+										display: 'flex',
+										gap: '8px',
+										justifyContent: 'flex-end',
+									}}
+								>
 									<button
 										onClick={() => setIsDateOpen(false)}
 										style={{
@@ -212,7 +243,7 @@ export default function Edit({ attributes, setAttributes }) {
 											border: '1px solid #dcdcde',
 											borderRadius: '3px',
 											cursor: 'pointer',
-											fontSize: '13px'
+											fontSize: '13px',
 										}}
 									>
 										Cancel
@@ -222,12 +253,21 @@ export default function Edit({ attributes, setAttributes }) {
 										disabled={!selectedMonth || !selectedYear || !selectedDay}
 										style={{
 											padding: '6px 12px',
-											backgroundColor: selectedMonth && selectedYear && selectedDay ? '#007cba' : '#f0f0f1',
-											color: selectedMonth && selectedYear && selectedDay ? 'white' : '#a7aaad',
+											backgroundColor:
+												selectedMonth && selectedYear && selectedDay
+													? '#007cba'
+													: '#f0f0f1',
+											color:
+												selectedMonth && selectedYear && selectedDay
+													? 'white'
+													: '#a7aaad',
 											border: 'none',
 											borderRadius: '3px',
-											cursor: selectedMonth && selectedYear && selectedDay ? 'pointer' : 'not-allowed',
-											fontSize: '13px'
+											cursor:
+												selectedMonth && selectedYear && selectedDay
+													? 'pointer'
+													: 'not-allowed',
+											fontSize: '13px',
 										}}
 									>
 										Set Date
@@ -239,24 +279,42 @@ export default function Edit({ attributes, setAttributes }) {
 				</ToolbarGroup>
 			</BlockControls>
 
-			<div {...useBlockProps()}>
-				{sourceUrl ? (
-					<a href={sourceUrl} target="_blank" rel="noopener noreferrer">
-						<HeadingRichText />
-					</a>
-				) : (
-					<HeadingRichText />
-				)}
-				{releaseDate && <p>Release Date: {formatDate(releaseDate)}</p>}
-				<RichText
-					tagName="p"
-					placeholder={`Add a short description of the movie.`}
-					onChange={value => setAttributes({ excerpt: value })}
-					value={excerpt}
-					allowedFormats={['core/bold', 'core/italic']}
-					disableLineBreaks={true}
-				/>
-			</div>
+			<article {...useBlockProps()}>
+				<div>
+					{sourceUrl ? (
+						<a href={sourceUrl} target="_blank" rel="noopener noreferrer">
+							<RichText
+								tagName={HeadingTag}
+								placeholder="Add a movie title..."
+								onChange={value => setAttributes({ headingText: value })}
+								value={headingText || ''}
+								allowedFormats={[]}
+							/>
+						</a>
+					) : (
+						<RichText
+							tagName={HeadingTag}
+							placeholder="Add a movie title..."
+							onChange={value => setAttributes({ headingText: value })}
+							value={headingText || ''}
+							allowedFormats={[]}
+						/>
+					)}
+					{releaseDate && (
+						<p>
+							<em>Release Date: {formatDate(releaseDate)}</em>
+						</p>
+					)}
+					<RichText
+						tagName="p"
+						placeholder={`Add a short description of the movie.`}
+						onChange={value => setAttributes({ description: value })}
+						value={description}
+						allowedFormats={['core/bold', 'core/italic']}
+						disableLineBreaks={true}
+					/>
+				</div>
+			</article>
 		</>
 	);
 }

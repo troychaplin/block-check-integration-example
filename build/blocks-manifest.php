@@ -80,7 +80,7 @@ return array(
 				'type' => 'string',
 				'default' => ''
 			),
-			'excerpt' => array(
+			'description' => array(
 				'type' => 'string',
 				'default' => ''
 			)

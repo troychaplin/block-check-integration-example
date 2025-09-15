@@ -119,7 +119,7 @@ class BlockChecksIntegration {
 	private function register_movie_card_checks( $registry ) {
 		$registry->register_check_with_plugin_detection(
 			'multi-block-check-example/movie-card',
-			'check_heading',
+			'check_heading_text',
 			array(
 				'error_msg'   => __( 'A heading is required for card blocks.', 'multi-block-checks-example' ),
 				'warning_msg' => __( 'Consider adding a heading for better accessibility.', 'multi-block-checks-example' ),
@@ -131,7 +131,7 @@ class BlockChecksIntegration {
 
 		$registry->register_check_with_plugin_detection(
 			'multi-block-check-example/movie-card',
-			'check_link',
+			'check_source_link',
 			array(
 				'error_msg'   => __( 'Link is required for card blocks.', 'multi-block-checks-example' ),
 				'warning_msg' => __( 'Consider adding a link for better credibility.', 'multi-block-checks-example' ),
@@ -143,7 +143,7 @@ class BlockChecksIntegration {
 
 		$registry->register_check_with_plugin_detection(
 			'multi-block-check-example/movie-card',
-			'check_content',
+			'check_description',
 			array(
 				'error_msg'   => __( 'Card content is required.', 'multi-block-checks-example' ),
 				'warning_msg' => __( 'Card content is recommended.', 'multi-block-checks-example' ),
