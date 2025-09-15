@@ -8,15 +8,8 @@ import {
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
-import {
-	heading,
-	headingLevel2,
-	headingLevel3,
-	headingLevel4,
-	link,
-	calendar,
-} from '@wordpress/icons';
-import { ToolbarGroup, ToolbarDropdownMenu, ToolbarButton, Popover } from '@wordpress/components';
+import { link, calendar } from '@wordpress/icons';
+import { ToolbarGroup, ToolbarButton, Popover } from '@wordpress/components';
 
 // Internal dependencies
 import {
@@ -25,6 +18,7 @@ import {
 	useDateSelector,
 	parseDateComponents,
 } from '../../scripts/helpers/date-selector';
+import { HeadingLevelSelector } from '../../scripts/helpers/heading-selector';
 
 export default function Edit({ attributes, setAttributes }) {
 	const { headingText, headingLevel, sourceUrl, releaseDate, description } = attributes;
@@ -73,29 +67,10 @@ export default function Edit({ attributes, setAttributes }) {
 		<>
 			<BlockControls>
 				<ToolbarGroup>
-					<ToolbarDropdownMenu
-						icon={heading}
-						label={__('Change heading level', 'multi-block-checks-example')}
-						controls={[
-							{
-								title: __('Heading 2', 'multi-block-checks-example'),
-								icon: headingLevel2,
-								onClick: () => setAttributes({ headingLevel: 2 }),
-								isActive: headingLevel === 2,
-							},
-							{
-								title: __('Heading 3', 'multi-block-checks-example'),
-								icon: headingLevel3,
-								onClick: () => setAttributes({ headingLevel: 3 }),
-								isActive: headingLevel === 3,
-							},
-							{
-								title: __('Heading 4', 'multi-block-checks-example'),
-								icon: headingLevel4,
-								onClick: () => setAttributes({ headingLevel: 4 }),
-								isActive: headingLevel === 4,
-							},
-						]}
+					<HeadingLevelSelector
+						currentLevel={headingLevel}
+						onLevelChange={level => setAttributes({ headingLevel: level })}
+						availableLevels={[2, 3, 4]}
 					/>
 					<ToolbarButton
 						icon={link}
