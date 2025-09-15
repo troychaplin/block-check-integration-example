@@ -6,7 +6,7 @@ A complete working example demonstrating how to integrate custom blocks with the
 
 This example plugin demonstrates:
 
-- **Custom Block Creation**: Two example blocks (Light Cards and Dark Cards) with accessibility-focused attributes
+- **Custom Block Creation**: Two example blocks (Album Card and Movie Card) with accessibility-focused attributes
 - **Accessibility Check Registration**: PHP integration to register custom validation rules
 - **JavaScript Validation**: Real-time validation logic implemented in the block editor
 - **Settings Integration**: Automatic creation of admin settings pages for configuring validation levels
@@ -16,34 +16,40 @@ This example plugin demonstrates:
 
 ### Custom Blocks
 
-- **Light Cards Block** (`external-blocks-a11y-example/light-cards`)
+- **Album Card Block** (`multi-block-check-example/album-card`)
   - Heading field with configurable heading level
-  - Content field for testimonial text
-  - Link field for credibility/reference
+  - Release date field for album information
+  - Description field for album details
+  - Source URL field for credibility/reference
   - Accessibility checks for required fields
 
-- **Dark Cards Block** (`external-blocks-a11y-example/dark-cards`)
-  - Similar structure to Light Cards with different styling
+- **Movie Card Block** (`multi-block-check-example/movie-card`)
+  - Similar structure to Album Card with different styling
   - Same accessibility validation rules
   - Demonstrates multiple blocks with shared validation logic
 
 ### Accessibility Checks
 
-The example implements three types of accessibility checks:
+The example implements four types of accessibility checks for each block:
 
-1. **Heading Check** (`check_heading`)
+1. **Heading Text Check** (`check_album_heading_text` / `check_movie_heading_text`)
    - Validates that heading content exists when provided
    - Category: `accessibility`
    - Configurable via admin settings
 
-2. **Content Check** (`check_content`)
-   - Ensures testimonial content is provided
+2. **Release Date Check** (`check_album_release_date` / `check_movie_release_date`)
+   - Ensures release date is provided
    - Category: `validation`
    - Configurable via admin settings
 
-3. **Link Check** (`check_link`)
+3. **Description Check** (`check_album_description` / `check_movie_description`)
+   - Validates that description content is provided
+   - Category: `validation`
+   - Configurable via admin settings
+
+4. **Source Link Check** (`check_album_source_link` / `check_movie_source_link`)
    - Validates that a reference link is provided
-   - Category: `validation` (Light Cards) / `accessibility` (Dark Cards)
+   - Category: `accessibility`
    - Configurable via admin settings
 
 ## Quick Start
@@ -63,9 +69,21 @@ The example implements three types of accessibility checks:
    git clone https://github.com/troychaplin/block-check-integration-example.git
    ```
 
-2. **Activate the plugin** in WordPress admin
+2. **Install dependencies**:
+   ```bash
+   cd block-check-integration-example/
+   npm install
+   composer install
+   ```
 
-3. **Configure the settings** in the submenu page of `Block Checks`
+3. **Build the plugin**:
+   ```bash
+   npm run build
+   ```
+
+4. **Activate the plugin** in WordPress admin
+
+5. **Configure the settings** in the submenu page of `Block Checks`
 
 ## How It Works
 
@@ -74,17 +92,17 @@ The example implements three types of accessibility checks:
 The plugin registers accessibility checks using the Block Accessibility Checks API:
 
 ```php
-// Functions/BlockChecksIntegration.php
-add_action( 'ba11yc_ready', array( $this, 'ba11y_external_block_light_cards_check' ) );
+// Functions/CheckAlbumCards.php
+add_action( 'ba11yc_ready', array( $this, 'register_checks' ) );
 
-public function ba11y_external_block_light_cards_check( $registry ) {
-    $registry->register_check(
-        'external-blocks-a11y-example/light-cards',
-        'check_heading',
+public function register_checks( $registry ) {
+    $registry->register_check_with_plugin_detection(
+        'multi-block-check-example/album-card',
+        'check_album_heading_text',
         array(
-            'error_msg'   => __( 'A heading is required for card blocks.', 'external-blocks-a11y-example' ),
-            'warning_msg' => __( 'Consider adding a heading for better accessibility.', 'external-blocks-a11y-example' ),
-            'description' => __( 'Card heading', 'external-blocks-a11y-example' ),
+            'error_msg'   => __( 'A title is required for each album card.', 'multi-block-checks-example' ),
+            'warning_msg' => __( 'Consider adding an album title for better accessibility.', 'multi-block-checks-example' ),
+            'description' => __( 'Set the requirements for the album title attribute', 'multi-block-checks-example' ),
             'type'        => 'settings',
             'category'    => 'accessibility',
         )
@@ -97,22 +115,24 @@ public function ba11y_external_block_light_cards_check( $registry ) {
 Real-time validation is implemented using WordPress hooks:
 
 ```javascript
-// src/scripts/light-cards-check.js
+// src/scripts/checks/album-card-check.js
 addFilter(
     'ba11yc.validateBlock',
-    'external-blocks-a11y-example/validation',
+    'multi-block-checks-example/validation',
     (isValid, blockType, attributes, checkName) => {
-        if (blockType !== 'external-blocks-a11y-example/light-cards') {
+        if (blockType !== 'multi-block-check-example/album-card') {
             return isValid;
         }
 
         switch (checkName) {
-            case 'check_heading':
-                return !!(attributes.heading && attributes.heading.trim());
-            case 'check_content':
-                return !!(attributes.content && attributes.content.trim());
-            case 'check_link':
-                return !!(attributes.link && attributes.link.trim());
+            case 'check_album_heading_text':
+                return !!(attributes.headingText && attributes.headingText.trim());
+            case 'check_album_release_date':
+                return !!(attributes.releaseDate && attributes.releaseDate.trim());
+            case 'check_album_description':
+                return !!(attributes.description && attributes.description.trim());
+            case 'check_album_source_link':
+                return !!(attributes.sourceUrl && attributes.sourceUrl.trim());
             default:
                 return isValid;
         }
@@ -122,7 +142,7 @@ addFilter(
 
 ### 3. Settings Integration
 
-Checks registered with `'type' => 'settings'` automatically appear in the WordPress admin under **Block Checks → External Blocks A11Y Example**, allowing site administrators to:
+Checks registered with `'type' => 'settings'` automatically appear in the WordPress admin under **Block Checks → Multi-Block Check Example**, allowing site administrators to:
 
 - Set validation levels (Error, Warning, Disabled) for each check
 - Enable/disable specific validation rules
@@ -133,24 +153,39 @@ Checks registered with `'type' => 'settings'` automatically appear in the WordPr
 ```
 block-check-integration-example/
 ├── Functions/
-│   ├── BlockChecksIntegration.php    # Accessibility check registration
-│   ├── Enqueues.php                  # Script/style enqueuing
-│   ├── Plugin_Paths.php              # Plugin path utilities
-│   └── Register_Blocks.php           # Block registration
+│   ├── CheckAlbumCards.php              # Album card accessibility check registration
+│   ├── CheckMovieCards.php              # Movie card accessibility check registration
+│   ├── Enqueues.php                     # Script/style enqueuing
+│   ├── Plugin_Paths.php                 # Plugin path utilities
+│   └── Register_Blocks.php              # Block registration
 ├── src/
 │   ├── blocks/
-│   │   ├── light-cards/              # Light Cards block
-│   │   └── dark-cards/               # Dark Cards block
+│   │   ├── album-card/                  # Album Card block
+│   │   │   ├── block.json               # Block configuration
+│   │   │   ├── edit.js                  # Editor component
+│   │   │   ├── index.js                 # Block registration
+│   │   │   ├── save.js                  # Save component
+│   │   │   └── style.scss               # Block styles
+│   │   └── movie-card/                  # Movie Card block
+│   │       ├── block.json               # Block configuration
+│   │       ├── edit.js                  # Editor component
+│   │       ├── index.js                 # Block registration
+│   │       ├── save.js                  # Save component
+│   │       └── style.scss               # Block styles
 │   ├── scripts/
-│   │   ├── light-cards-check.js      # Light Cards validation
-│   │   └── dark-cards-check.js       # Dark Cards validation
-│   ├── editor-script.js              # Editor initialization
-│   └── frontend-script.js            # Frontend initialization
-├── build/                            # Compiled assets
-├── plugin.php                        # Main plugin file
-├── package.json                      # Node.js dependencies
-├── composer.json                     # PHP dependencies
-└── webpack.config.js                 # Build configuration
+│   │   ├── checks/
+│   │   │   ├── album-card-check.js      # Album Card validation
+│   │   │   └── movie-card-check.js      # Movie Card validation
+│   │   └── helpers/
+│   │       ├── date-selector.js         # Date picker component
+│   │       └── heading-selector.js      # Heading level selector
+│   ├── editor-script.js                 # Editor initialization
+│   └── frontend-script.js               # Frontend initialization
+├── build/                               # Compiled assets
+├── plugin.php                           # Main plugin file
+├── package.json                         # Node.js dependencies
+├── composer.json                        # PHP dependencies
+└── webpack.config.js                    # Build configuration
 ```
 
 ## Key Features Demonstrated
@@ -160,7 +195,8 @@ block-check-integration-example/
 - **Publishing Control**: Error-level checks prevent publishing
 - **Flexible Configuration**: Admin settings for each validation rule
 - **Multiple Block Support**: Shared validation logic across block types
-- **Modern Build Process**: Webpack-based asset compilation
+- **Modern Build Process**: Webpack-based asset compilation with WordPress Scripts
+- **Plugin Detection**: Uses `register_check_with_plugin_detection()` for better integration
 
 ## Integration Points
 
@@ -168,18 +204,51 @@ This example demonstrates integration with the Block Accessibility Checks plugin
 
 - **Action Hooks**: `ba11yc_ready` for check registration
 - **Filter Hooks**: `ba11yc.validateBlock` for validation logic
-- **Registry API**: Programmatic check management
+- **Registry API**: Programmatic check management with plugin detection
 - **Settings API**: Automatic admin interface generation
+
+## Customization
+
+## Development
+
+### Building the Plugin
+
+```bash
+# Install dependencies
+npm install
+composer install
+
+# Development build with watch mode
+npm run start
+
+# Production build
+npm run build
+
+# Lint and format code
+npm run lint
+npm run format
+```
+
+### Block Attributes
+
+Both blocks share the same attribute structure:
+
+- `headingText` (string): The title/heading for the card
+- `headingLevel` (number): The heading level (1-6, default: 2)
+- `sourceUrl` (string): Reference link for credibility
+- `releaseDate` (string): Release date information
+- `description` (string): Detailed description content
 
 ## Customization
 
 To adapt this example for your own blocks:
 
-1. **Update block types** in `Functions/BlockChecksIntegration.php`
-2. **Modify validation logic** in `src/scripts/*-check.js`
+1. **Update block types** in `Functions/CheckAlbumCards.php` and `Functions/CheckMovieCards.php`
+2. **Modify validation logic** in `src/scripts/checks/*-check.js`
 3. **Adjust block attributes** in `src/blocks/*/block.json`
-4. **Update text domain** and plugin information
+4. **Update text domain** and plugin information in `plugin.php`
 5. **Customize error messages** and validation rules
+6. **Add new helper components** in `src/scripts/helpers/`
 
 ## Support & Resources
 

@@ -1,2 +1,2 @@
-import './scripts/dark-cards-check.js';
-import './scripts/light-cards-check.js';
+import './scripts/checks/album-card-check.js';
+import './scripts/checks/movie-card-check.js';

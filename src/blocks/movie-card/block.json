@@ -1,18 +1,18 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "external-blocks-a11y-example/light-cards",
+	"name": "multi-block-check-example/movie-card",
 	"version": "1.0.0",
-	"title": "Light Cards: External Block w/Checks",
+	"title": "Movie Card",
 	"category": "text",
 	"icon": "universal-access",
-	"description": "An example block for displaying testimonials with accessibility checks in place.",
+	"description": "An example block for displaying movie cards with accessibility checks in place.",
 	"example": {},
 	"supports": {
 		"html": false
 	},
 	"attributes": {
-		"heading": {
+		"headingText": {
 			"type": "string",
 			"default": ""
 		},
@@ -20,16 +20,20 @@
 			"type": "number",
 			"default": 2
 		},
-		"link": {
+        "sourceUrl": {
+            "type": "string",
+            "default": ""
+        },
+		"releaseDate": {
 			"type": "string",
 			"default": ""
 		},
-		"content": {
+		"description": {
 			"type": "string",
 			"default": ""
 		}
 	},
-	"textdomain": "external-blocks-a11y-example",
+	"textdomain": "multi-block-checks-example",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

@@ -1,5 +1,5 @@
 {
-	"name": "external-blocks-a11y-example",
+	"name": "multi-block-checks-example",
 	"version": "1.0.0",
 	"description": "An example of an external multi-block with accessibility & validation checks",
 	"author": "Troy Chaplin",
@@ -8,19 +8,20 @@
 	"scripts": {
 		"build": "wp-scripts build --experimental-modules --blocks-manifest",
 		"lint": "npm run lint:js && npm run lint:php && npm run lint:css",
-        "format": "npm run format:js && npm run format:php && npm run format:css",
+		"format": "npm run format:js && npm run format:php && npm run format:css",
 		"lint:css": "stylelint \"**/*.scss\" --max-warnings=0",
-        "format:css": "stylelint \"**/*.scss\" --fix",
+		"format:css": "stylelint \"**/*.scss\" --fix",
 		"lint:js": "wp-scripts lint-js --max-warnings=0",
 		"format:js": "wp-scripts lint-js --fix",
-        "lint:php": "composer run lint",
-        "format:php": "./vendor/bin/phpcbf --standard=phpcs.xml.dist -v",
+		"lint:php": "composer run lint",
+		"format:php": "./vendor/bin/phpcbf --standard=phpcs.xml.dist -v",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
 		"start": "wp-scripts start --experimental-modules --blocks-manifest"
 	},
 	"devDependencies": {
 		"@wordpress/eslint-plugin": "^22.15.0",
+		"@wordpress/icons": "^10.30.0",
 		"@wordpress/prettier-config": "^4.29.0",
 		"@wordpress/scripts": "^30.22.0",
 		"@wordpress/stylelint-config": "^23.21.0",

@@ -1,15 +1,15 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
-	'dark-cards' => array(
+	'album-card' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'external-blocks-a11y-example/dark-cards',
+		'name' => 'multi-block-check-example/album-card',
 		'version' => '1.0.0',
-		'title' => 'Dark Cards: External Block w/Checks',
+		'title' => 'Album Card',
 		'category' => 'text',
 		'icon' => 'universal-access',
-		'description' => 'An example block for displaying testimonials with accessibility checks in place.',
+		'description' => 'An example block for displaying album cards with accessibility checks in place.',
 		'example' => array(
 			
 		),
@@ -17,7 +17,7 @@ return array(
 			'html' => false
 		),
 		'attributes' => array(
-			'heading' => array(
+			'headingText' => array(
 				'type' => 'string',
 				'default' => ''
 			),
@@ -25,30 +25,34 @@ return array(
 				'type' => 'number',
 				'default' => 2
 			),
-			'link' => array(
+			'sourceUrl' => array(
 				'type' => 'string',
 				'default' => ''
 			),
-			'content' => array(
+			'releaseDate' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'description' => array(
 				'type' => 'string',
 				'default' => ''
 			)
 		),
-		'textdomain' => 'external-blocks-a11y-example',
+		'textdomain' => 'multi-block-checks-example',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
 		'viewScript' => 'file:./view.js'
 	),
-	'light-cards' => array(
+	'movie-card' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'external-blocks-a11y-example/light-cards',
+		'name' => 'multi-block-check-example/movie-card',
 		'version' => '1.0.0',
-		'title' => 'Light Cards: External Block w/Checks',
+		'title' => 'Movie Card',
 		'category' => 'text',
 		'icon' => 'universal-access',
-		'description' => 'An example block for displaying testimonials with accessibility checks in place.',
+		'description' => 'An example block for displaying movie cards with accessibility checks in place.',
 		'example' => array(
 			
 		),
@@ -56,7 +60,7 @@ return array(
 			'html' => false
 		),
 		'attributes' => array(
-			'heading' => array(
+			'headingText' => array(
 				'type' => 'string',
 				'default' => ''
 			),
@@ -64,16 +68,20 @@ return array(
 				'type' => 'number',
 				'default' => 2
 			),
-			'link' => array(
+			'sourceUrl' => array(
 				'type' => 'string',
 				'default' => ''
 			),
-			'content' => array(
+			'releaseDate' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'description' => array(
 				'type' => 'string',
 				'default' => ''
 			)
 		),
-		'textdomain' => 'external-blocks-a11y-example',
+		'textdomain' => 'multi-block-checks-example',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',

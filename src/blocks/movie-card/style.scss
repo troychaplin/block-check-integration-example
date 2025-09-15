@@ -1,0 +1,31 @@
+.wp-block-multi-block-check-example-movie-card div {
+	background-color: #fff;
+	color: #2f2f2f;
+    border: 1px solid #adadad;
+	padding: 28px 36px;
+    border-radius: 8px;
+
+    h2, h3, h4, p {
+        margin: 0;
+    }
+
+    h2, h3, h4 {
+        font-size: var(--wp--preset--font-size--large);
+        margin-bottom: 18px;
+    }
+
+    .release-date {
+        font-size: var(--wp--preset--font-size--medium);
+        font-style: italic;
+    }
+    
+    p {
+        font-size: var(--wp--preset--font-size--medium);
+        line-height: 1.5;
+        
+        &:not(:last-child) {
+            margin-bottom: 12px;
+        }
+    }
+    
+}

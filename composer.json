@@ -5,7 +5,7 @@
    "license": "GPL-2.0-or-later",
    "autoload": {
        "psr-4": {
-           "BA11Y_External_Block\\": "Functions/"
+           "Multi_Block_Checks\\": "Functions/"
        }
    },
    "require-dev": {
