@@ -1,0 +1,41 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "multi-block-check-example/album-card",
+	"version": "1.0.0",
+	"title": "Album Card",
+	"category": "text",
+	"icon": "universal-access",
+	"description": "An example block for displaying album cards with accessibility checks in place.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"headingText": {
+			"type": "string",
+			"default": ""
+		},
+		"headingLevel": {
+			"type": "number",
+			"default": 2
+		},
+        "sourceUrl": {
+            "type": "string",
+            "default": ""
+        },
+		"releaseDate": {
+			"type": "string",
+			"default": ""
+		},
+		"description": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"textdomain": "multi-block-checks-example",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}

@@ -30,7 +30,8 @@ $Multi_Block_Checks_classes = array(
 	\Multi_Block_Checks\Plugin_Paths::class,
 	\Multi_Block_Checks\Register_Blocks::class,
 	\Multi_Block_Checks\Enqueues::class,
-	\Multi_Block_Checks\BlockChecksIntegration::class,
+	\Multi_Block_Checks\CheckAlbumCards::class,
+	\Multi_Block_Checks\CheckMovieCards::class,
 );
 
 foreach ( $Multi_Block_Checks_classes as $Multi_Block_Checks_class ) {

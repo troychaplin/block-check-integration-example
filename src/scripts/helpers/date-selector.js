@@ -114,9 +114,6 @@ export const DateSelector = ({
 	title = 'Select Date',
 }) => {
 	const isDateComplete = selectedMonth && selectedYear && selectedDay;
-	const monthOptions = isDateComplete ? getMonthOptions() : [];
-	const dayOptions = isDateComplete ? getDayOptions() : [];
-	const yearOptions = isDateComplete ? getYearOptions() : [];
 
 	const handleDateSet = () => {
 		if (isDateComplete) {
@@ -137,6 +134,10 @@ export const DateSelector = ({
 	if (!isOpen) {
 		return null;
 	}
+
+	const monthOptions = getMonthOptions();
+	const dayOptions = getDayOptions();
+	const yearOptions = getYearOptions();
 
 	return (
 		<Popover position="bottom center" onClose={handleClose}>

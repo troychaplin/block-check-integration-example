@@ -17,7 +17,7 @@ return array(
 			'html' => false
 		),
 		'attributes' => array(
-			'heading' => array(
+			'headingText' => array(
 				'type' => 'string',
 				'default' => ''
 			),
@@ -25,19 +25,15 @@ return array(
 				'type' => 'number',
 				'default' => 2
 			),
+			'sourceUrl' => array(
+				'type' => 'string',
+				'default' => ''
+			),
 			'releaseDate' => array(
 				'type' => 'string',
 				'default' => ''
 			),
-			'spotifyMusic' => array(
-				'type' => 'string',
-				'default' => ''
-			),
-			'appleMusic' => array(
-				'type' => 'string',
-				'default' => ''
-			),
-			'youtubeMusic' => array(
+			'description' => array(
 				'type' => 'string',
 				'default' => ''
 			)

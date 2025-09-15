@@ -21,29 +21,24 @@ addFilter(
 
 		// Run validation based on check name
 		switch (checkName) {
-			case 'check_album_card_heading':
-				// If heading exists, it should have content
-				if (attributes.heading !== undefined && attributes.heading !== null) {
-					return !!(attributes.heading && attributes.heading.trim());
-				}
-				// No heading is fine (valid)
-				return true;
+			case 'check_album_heading_text':
+				// If heading exists, it should have content; no heading is also valid
+				return (
+					!attributes.headingText ||
+					!!(attributes.headingText && attributes.headingText.trim())
+				);
 
 			case 'check_album_release_date':
 				// Return true if valid, false if invalid
 				return !!(attributes.releaseDate && attributes.releaseDate.trim());
 
-			case 'check_album_spotify_music':
+			case 'check_album_source_link':
 				// Return true if valid, false if invalid
-				return !!(attributes.spotifyMusic && attributes.spotifyMusic.trim());
+				return !!(attributes.sourceUrl && attributes.sourceUrl.trim());
 
-			case 'check_album_apple_music':
+			case 'check_album_description':
 				// Return true if valid, false if invalid
-				return !!(attributes.appleMusic && attributes.appleMusic.trim());
-
-			case 'check_album_youtube_music':
-				// Return true if valid, false if invalid
-				return !!(attributes.youtubeMusic && attributes.youtubeMusic.trim());
+				return !!(attributes.description && attributes.description.trim());
 
 			default:
 				// Unknown check, let other filters handle it

@@ -12,7 +12,7 @@
     "html": false
   },
   "attributes": {
-    "heading": {
+    "headingText": {
       "type": "string",
       "default": ""
     },
@@ -20,19 +20,15 @@
       "type": "number",
       "default": 2
     },
+    "sourceUrl": {
+      "type": "string",
+      "default": ""
+    },
     "releaseDate": {
       "type": "string",
       "default": ""
     },
-    "spotifyMusic": {
-      "type": "string",
-      "default": ""
-    },
-    "appleMusic": {
-      "type": "string",
-      "default": ""
-    },
-    "youtubeMusic": {
+    "description": {
       "type": "string",
       "default": ""
     }
