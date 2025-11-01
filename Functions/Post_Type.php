@@ -9,6 +9,8 @@
 
 namespace Multi_Block_Checks;
 
+use BlockAccessibility\MetaValidation;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -178,7 +180,7 @@ class Post_Type {
 				'show_in_rest'      => true,
 				'object_subtype'    => 'band',
 				'sanitize_callback' => 'sanitize_text_field',
-				'validate_callback' => \BlockAccessibility\ba11yc_required(
+				'validate_callback' => MetaValidation::required(
 					'band',
 					'band_origin',
 					array(
