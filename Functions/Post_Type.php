@@ -32,8 +32,8 @@ class Post_Type {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_band_post_type' ) );
 		add_action( 'init', array( $this, 'register_genre_taxonomy' ) );
-		add_action( 'init', array( $this, 'register_meta_rest_api' ) );
-		add_action( 'rest_api_init', array( $this, 'register_meta_rest_api' ) );
+		add_action( 'init', array( $this, 'register_band_meta' ) );
+		add_action( 'rest_api_init', array( $this, 'register_band_meta' ) );
 	}
 
 	/**
@@ -167,8 +167,8 @@ class Post_Type {
 	 *
 	 * @return void
 	 */
-	public function register_meta_rest_api() {
-		// Band origin.
+	public function register_band_meta() {
+		// Band origin with validation.
 		register_meta(
 			'post',
 			'band_origin',
@@ -178,19 +178,17 @@ class Post_Type {
 				'show_in_rest'      => true,
 				'object_subtype'    => 'band',
 				'sanitize_callback' => 'sanitize_text_field',
-			)
-		);
-
-		// Band start date.
-		register_meta(
-			'post',
-			'band_start_date',
-			array(
-				'single'            => true,
-				'type'              => 'date',
-				'show_in_rest'      => true,
-				'object_subtype'    => 'band',
-				'sanitize_callback' => 'sanitize_text_field',
+				'validate_callback' => \BlockAccessibility\ba11yc_required(
+					'band',
+					'band_origin',
+					array(
+						'error_msg'   => __( 'City of Origin is required.', 'multi-block-checks-example' ),
+						'warning_msg' => __( 'City of Origin is recommended.', 'multi-block-checks-example' ),
+						'description' => __( 'The city where the band originated', 'multi-block-checks-example' ),
+						'type'        => 'settings',
+						'category'    => 'validation',
+					)
+				),
 			)
 		);
 	}

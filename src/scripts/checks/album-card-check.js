@@ -11,7 +11,7 @@ import { addFilter } from '@wordpress/hooks';
  * Register validation logic for testimonial block using the unified hook system
  */
 addFilter(
-	'ba11yc.validateBlock',
+	'ba11yc_validate_block',
 	'multi-block-checks-example/validation',
 	(isValid, blockType, attributes, checkName) => {
 		// Only handle our block type - FIXED: match the PHP registration

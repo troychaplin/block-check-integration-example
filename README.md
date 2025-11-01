@@ -117,7 +117,7 @@ Real-time validation is implemented using WordPress hooks:
 ```javascript
 // src/scripts/checks/album-card-check.js
 addFilter(
-    'ba11yc.validateBlock',
+    'ba11yc_validate_block',
     'multi-block-checks-example/validation',
     (isValid, blockType, attributes, checkName) => {
         if (blockType !== 'multi-block-check-example/album-card') {
@@ -203,7 +203,7 @@ block-check-integration-example/
 This example demonstrates integration with the Block Accessibility Checks plugin through:
 
 - **Action Hooks**: `ba11yc_ready` for check registration
-- **Filter Hooks**: `ba11yc.validateBlock` for validation logic
+- **Filter Hooks**: `ba11yc_validate_block` for validation logic
 - **Registry API**: Programmatic check management with plugin detection
 - **Settings API**: Automatic admin interface generation
 

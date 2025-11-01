@@ -1,0 +1,36 @@
+/**
+ * Meta Validation for Band Post Type
+ *
+ * Provides client-side validation for band meta fields.
+ */
+
+import { addFilter } from '@wordpress/hooks';
+
+/**
+ * Validate band meta fields
+ *
+ * This filter integrates with the Block Accessibility Checks plugin
+ * to validate post meta fields in real-time.
+ */
+addFilter(
+	'ba11yc_validate_meta',
+	'multi-block-checks-example/validation',
+	(isValid, value, postType, metaKey, checkName) => {
+		// Only validate for band post type
+		if (postType !== 'band') {
+			return isValid;
+		}
+
+		switch (metaKey) {
+			case 'band_origin':
+				if (checkName === 'required') {
+					// Validate that band origin is not empty
+					return !!(value && value.trim());
+				}
+				break;
+		}
+
+		return isValid;
+	}
+);
+
