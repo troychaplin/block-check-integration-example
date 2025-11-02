@@ -165,12 +165,14 @@ class Post_Type {
 	}
 
 	/**
-	 * Registers meta fields for REST API.
+	 * Registers meta fields for the band post type.
+	 *
+	 * This method is responsible for registering the meta fields for the band post type.
+	 * It registers the meta fields for the band post type and sets the necessary settings.
 	 *
 	 * @return void
 	 */
 	public function register_band_meta() {
-		// Band origin with validation.
 		register_meta(
 			'post',
 			'band_origin',

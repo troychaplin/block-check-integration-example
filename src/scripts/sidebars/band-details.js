@@ -11,6 +11,11 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
+/**
+ * Get ValidatedToolsPanelItem from Block Accessibility Checks plugin
+ */
+const { ValidatedToolsPanelItem } = window.BlockAccessibilityChecks || {};
+
 const BandDetailsSidebar = () => {
 	// Get post type first, then conditionally get meta
 	const { postType, bandOrigin } = useSelect(select => {
@@ -43,6 +48,9 @@ const BandDetailsSidebar = () => {
 		return null;
 	}
 
+	// If Block Accessibility Checks plugin is not available, use standard ToolsPanelItem
+	const ToolsPanelItemComponent = ValidatedToolsPanelItem || ToolsPanelItem;
+
 	return (
 		<PluginSidebar name="band-details-sidebar" title={__('Band Details')} icon={'format-audio'}>
 			<ToolsPanel
@@ -55,7 +63,8 @@ const BandDetailsSidebar = () => {
 					})
 				}
 			>
-				<ToolsPanelItem
+				<ToolsPanelItemComponent
+					metaKey="band_origin"
 					hasValue={() => bandOrigin !== ''}
 					label="City of Origin"
 					onDeselect={() => updateMeta('band_origin', '')}
@@ -70,7 +79,7 @@ const BandDetailsSidebar = () => {
 							'multi-block-checks-example'
 						)}
 					/>
-				</ToolsPanelItem>
+				</ToolsPanelItemComponent>
 			</ToolsPanel>
 		</PluginSidebar>
 	);
