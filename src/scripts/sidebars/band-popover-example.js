@@ -137,7 +137,6 @@ const MonthYearSelector = ({
 const BandMetaPanel = () => {
 	// Get the current meta values for band fields.
 	const meta = useSelect(select => select('core/editor').getEditedPostAttribute('meta'));
-	const origin = meta?.band_origin || '';
 	const startDate = meta?.band_start_date || '';
 
 	// Get the function to update the meta value.
@@ -177,16 +176,6 @@ const BandMetaPanel = () => {
 			name="band-meta-panel"
 			title={__('Band Details', 'multi-block-checks-example')}
 		>
-			<TextControl
-				label={__('City of Origin', 'multi-block-checks-example')}
-				help={__(
-					'Where the band originated from (e.g., "Los Angeles, CA", "London, UK")',
-					'multi-block-checks-example'
-				)}
-				value={origin}
-				onChange={value => editPost({ meta: { ...meta, band_origin: value } })}
-			/>
-
 			<div style={{ marginBottom: '16px' }}>
 				<label
 					htmlFor="band-start-date-button"

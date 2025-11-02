@@ -28,9 +28,22 @@ addFilter(
 					return !!(value && value.trim());
 				}
 				break;
+
+			case 'band_record_label':
+				if (checkName === 'required') {
+					// Validate that band record label is not empty
+					return !!(value && value.trim());
+				}
+				break;
+
+			case 'band_first_album':
+				if (checkName === 'required') {
+					// Validate that band first album is not empty
+					return !!(value && value.trim());
+				}
+				break;
 		}
 
 		return isValid;
 	}
 );
-

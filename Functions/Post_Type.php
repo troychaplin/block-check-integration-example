@@ -195,5 +195,49 @@ class Post_Type {
 				),
 			)
 		);
+		register_meta(
+			'post',
+			'band_record_label',
+			array(
+				'single'            => true,
+				'type'              => 'string',
+				'show_in_rest'      => true,
+				'object_subtype'    => 'band',
+				'sanitize_callback' => 'sanitize_text_field',
+				'validate_callback' => MetaValidation::required(
+					'band',
+					'band_record_label',
+					array(
+						'error_msg'   => __( 'Record Label is required.', 'multi-block-checks-example' ),
+						'warning_msg' => __( 'Record Label is recommended.', 'multi-block-checks-example' ),
+						'description' => __( 'The record label of the band', 'multi-block-checks-example' ),
+						'type'        => 'settings',
+						'category'    => 'validation',
+					)
+				),
+			)
+		);
+		register_meta(
+			'post',
+			'band_first_album',
+			array(
+				'single'            => true,
+				'type'              => 'string',
+				'show_in_rest'      => true,
+				'object_subtype'    => 'band',
+				'sanitize_callback' => 'sanitize_text_field',
+				'validate_callback' => MetaValidation::required(
+					'band',
+					'band_first_album',
+					array(
+						'error_msg'   => __( 'First Album is required.', 'multi-block-checks-example' ),
+						'warning_msg' => __( 'First Album is recommended.', 'multi-block-checks-example' ),
+						'description' => __( 'The first album of the band', 'multi-block-checks-example' ),
+						'type'        => 'settings',
+						'category'    => 'validation',
+					)
+				),
+			)
+		);
 	}
 }
