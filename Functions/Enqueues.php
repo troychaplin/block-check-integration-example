@@ -39,10 +39,16 @@ class Enqueues {
 	public function enqueue_block_assets() {
 		$asset_file = include Plugin_Paths::plugin_path() . 'build/editor-script.asset.php';
 
+		// Add Block Accessibility Checks plugin as a dependency.
+		$dependencies = array_merge(
+			$asset_file['dependencies'],
+			array( 'block-accessibility-script' )
+		);
+
 		wp_enqueue_script(
 			'editor-script-js',
 			Plugin_Paths::plugin_url() . 'build/editor-script.js',
-			$asset_file['dependencies'],
+			$dependencies,
 			$asset_file['version'],
 			false
 		);
