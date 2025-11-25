@@ -9,9 +9,13 @@ addFilter(
 	'ba11yc_validate_editor',
 	'multi-block-checks/first-block-heading',
 	(isValid, blocks, postType, checkName, rule) => {
-		if (checkName !== 'first_block_heading' || postType !== 'post') {
+		// Only process this specific check
+		if (checkName !== 'first_block_heading') {
 			return isValid;
 		}
+
+		// The validation system already filters by post type, so we don't need to check it here
+		// This check will only run for post types where it's registered (post, page, etc.)
 
 		if (!blocks || blocks.length === 0) {
 			return true; // Empty editor is fine? Or maybe not. Let's say fine.
@@ -31,9 +35,12 @@ addFilter(
 	'ba11yc_validate_editor',
 	'multi-block-checks/max-paragraphs',
 	(isValid, blocks, postType, checkName, rule) => {
-		if (checkName !== 'max_paragraphs' || postType !== 'post') {
+		// Only process this specific check
+		if (checkName !== 'max_paragraphs') {
 			return isValid;
 		}
+
+		// The validation system already filters by post type, so we don't need to check it here
 
 		const paragraphCount = blocks.reduce((count, block) => {
 			if (block.name === 'core/paragraph') {
