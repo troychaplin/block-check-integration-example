@@ -33,6 +33,7 @@ $Multi_Block_Checks_classes = array(
 	\Multi_Block_Checks\Post_Type::class,
 	\Multi_Block_Checks\CheckAlbumCards::class,
 	\Multi_Block_Checks\CheckMovieCards::class,
+	\Multi_Block_Checks\Register_Editor_Checks::class,
 );
 
 foreach ( $Multi_Block_Checks_classes as $Multi_Block_Checks_class ) {
