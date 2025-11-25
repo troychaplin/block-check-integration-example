@@ -38,7 +38,7 @@ class Register_Editor_Checks {
 			array(
 				'error_msg'   => \__( 'The first block must be a Heading block.', 'multi-block-checks-example' ),
 				'warning_msg' => \__( 'It is recommended that the first block is a Heading block.', 'multi-block-checks-example' ),
-				'type'        => 'error', // Default to error.
+				'type'        => 'settings', // Default to error.
 				'priority'    => 10,
 				'description' => \__( 'Ensures that the content starts with a heading for better accessibility and SEO.', 'multi-block-checks-example' ),
 			)

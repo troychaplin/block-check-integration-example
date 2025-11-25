@@ -54,7 +54,7 @@ class CheckMovieCards {
 				'error_msg'   => __( 'A title is required for each movie card.', 'multi-block-checks-example' ),
 				'warning_msg' => __( 'Consider adding an movie title for better accessibility.', 'multi-block-checks-example' ),
 				'description' => __( 'Set the requirements for the movie title attribute', 'multi-block-checks-example' ),
-				'type'        => 'settings',
+				'type'        => 'warning',
 				'category'    => 'accessibility',
 			)
 		);
@@ -66,7 +66,7 @@ class CheckMovieCards {
 				'error_msg'   => __( 'A release date is required for each movie card.', 'multi-block-checks-example' ),
 				'warning_msg' => __( 'Consider adding an movie release date for better accessibility.', 'multi-block-checks-example' ),
 				'description' => __( 'Set the requirements for the movie release date attribute', 'multi-block-checks-example' ),
-				'type'        => 'settings',
+				'type'        => 'warning',
 				'category'    => 'validation',
 			)
 		);
@@ -78,7 +78,7 @@ class CheckMovieCards {
 				'error_msg'   => __( 'A description is required for each movie card.', 'multi-block-checks-example' ),
 				'warning_msg' => __( 'Consider adding an movie description for better accessibility.', 'multi-block-checks-example' ),
 				'description' => __( 'Set the requirements for the movie description attribute', 'multi-block-checks-example' ),
-				'type'        => 'settings',
+				'type'        => 'warning',
 				'category'    => 'validation',
 			)
 		);
@@ -90,7 +90,7 @@ class CheckMovieCards {
 				'error_msg'   => __( 'A link is required for each movie card.', 'multi-block-checks-example' ),
 				'warning_msg' => __( 'Consider adding a link for better credibility.', 'multi-block-checks-example' ),
 				'description' => __( 'Set the requirements for the movie link attribute', 'multi-block-checks-example' ),
-				'type'        => 'settings',
+				'type'        => 'warning',
 				'category'    => 'accessibility',
 			)
 		);
