@@ -8,7 +8,7 @@ import { addFilter } from '@wordpress/hooks';
 addFilter(
 	'ba11yc_validate_editor',
 	'multi-block-checks/first-block-heading',
-	(isValid, blocks, postType, checkName, rule) => {
+	(isValid, blocks, _postType, checkName) => {
 		// Only process this specific check
 		if (checkName !== 'first_block_heading') {
 			return isValid;
@@ -34,7 +34,7 @@ addFilter(
 addFilter(
 	'ba11yc_validate_editor',
 	'multi-block-checks/max-paragraphs',
-	(isValid, blocks, postType, checkName, rule) => {
+	(isValid, blocks, _postType, checkName) => {
 		// Only process this specific check
 		if (checkName !== 'max_paragraphs') {
 			return isValid;
@@ -56,4 +56,3 @@ addFilter(
 		return true;
 	}
 );
-
