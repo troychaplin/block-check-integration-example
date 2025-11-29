@@ -67,7 +67,7 @@ class CheckAlbumCards {
 				'warning_msg' => __( 'Consider adding an album release date for better accessibility.', 'multi-block-checks-example' ),
 				'description' => __( 'Set the requirements for the album release date attribute', 'multi-block-checks-example' ),
 				'type'        => 'settings',
-				'category'    => 'validation',
+				'category'    => 'accessibility',
 			)
 		);
 
@@ -91,7 +91,7 @@ class CheckAlbumCards {
 				'warning_msg' => __( 'Consider adding a link for better credibility.', 'multi-block-checks-example' ),
 				'description' => __( 'Set the requirements for the album link attribute', 'multi-block-checks-example' ),
 				'type'        => 'settings',
-				'category'    => 'accessibility',
+				'category'    => 'validation',
 			)
 		);
 	}

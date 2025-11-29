@@ -1,34 +1,23 @@
 # Block Check Integration Example
 
-A complete working example demonstrating how to integrate custom blocks and post types with the [Block Accessibility Checks](https://wordpress.org/plugins/block-accessibility-checks/) plugin. This repository shows developers how to add accessibility validation and real-time checks to their custom blocks and post meta fields using the Block Accessibility Checks Developer API.
+A comprehensive example plugin demonstrating how to integrate with Block Accessibility Checks.
 
-## Overview
+This plugin serves as a reference implementation for developers who want to:
+1. Add custom accessibility checks to their own blocks
+2. Register checks that appear in the Block Accessibility Checks settings
+3. Validate block attributes and post meta fields
+4. Integrate with the visual feedback system
 
-This example plugin demonstrates:
-
-- **Custom Block Creation**: Two example blocks (Album Card and Movie Card) with accessibility-focused attributes
-- **Block Accessibility Check Registration**: PHP integration to register custom block validation rules
-- **Custom Post Type with Meta Validation**: Band post type with validated meta fields (Origin, Record Label, First Album)
-- **JavaScript Validation**: Real-time validation logic for both blocks and post meta
-- **Custom Editor Sidebars**: Plugin sidebar with validated meta field components
-- **Settings Integration**: Automatic creation of admin settings pages for configuring validation levels
-- **Complete Build Process**: Webpack configuration and asset management
-
-## What's Included
+## Features
 
 ### Custom Blocks
 
-- **Album Card Block** (`multi-block-check-example/album-card`)
-  - Heading field with configurable heading level
-  - Release date field for album information
-  - Description field for album details
-  - Source URL field for credibility/reference
-  - Accessibility checks for required fields
-
-- **Movie Card Block** (`multi-block-check-example/movie-card`)
-  - Similar structure to Album Card with different styling
-  - Same accessibility validation rules
-  - Demonstrates multiple blocks with shared validation logic
+- **Album Card Block** (`multi-block-checks-example/album-card`)
+  - Displays an album cover, title, release date, and description
+  - Includes multiple accessibility checks
+- **Movie Card Block** (`multi-block-checks-example/movie-card`)
+  - Displays a movie poster, title, release date, and description
+  - Demonstrates shared validation logic across multiple block types
 
 ### Custom Post Type
 
@@ -39,8 +28,8 @@ This example plugin demonstrates:
     - **City of Origin** (`band_origin`): Where the band originated
     - **Record Label** (`band_record_label`): The band's record label
     - **First Album** (`band_first_album`): The band's first album title
-  - Custom plugin sidebar with validated meta field components
-  - Demonstrates both `ValidatedToolsPanelItem` and `MetaField` wrapper components
+  - Custom plugin sidebar with validated meta fields
+  - Demonstrates `useMetaField` hook integration
 
 ### Accessibility Checks
 
@@ -85,105 +74,68 @@ The example also implements meta field validation for the Band post type:
    - Registered using `MetaValidation::required()`
    - Configurable via admin settings
 
-## Quick Start
+## Code Overview
 
-### Prerequisites
+### 1. Registering Blocks (PHP)
 
-- WordPress 6.7 or higher
-- PHP 7.4 or higher
-- [Block Accessibility Checks plugin](https://wordpress.org/plugins/block-accessibility-checks/) installed and activated
-- Node.js and npm for development
+```php
+// Functions/Register_Blocks.php
+function register_blocks() {
+    register_block_type( plugin_dir_path( __DIR__ ) . 'build/blocks/album-card' );
+    register_block_type( plugin_dir_path( __DIR__ ) . 'build/blocks/movie-card' );
+}
+add_action( 'init', 'register_blocks' );
+```
 
-### Installation
+### 2. Registering Checks (PHP)
 
-1. **Clone or download this repository** to your WordPress plugins directory:
-   ```bash
-   cd wp-content/plugins/
-   git clone https://github.com/troychaplin/block-check-integration-example.git
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   cd block-check-integration-example/
-   npm install
-   composer install
-   ```
-
-3. **Build the plugin**:
-   ```bash
-   npm run build
-   ```
-
-4. **Activate the plugin** in WordPress admin
-
-5. **Configure the settings** in the submenu page of `Block Checks`
-
-### Usage
-
-Once activated, the plugin provides:
-
-- **Album Card & Movie Card Blocks**: Available in the block inserter for creating validated content cards
-- **Band Post Type**: A new "Bands" menu item in the WordPress admin with validated meta fields
-- **Settings Pages**: Configure validation levels under **Block Checks → Multi-Block Check Example**
-
-## How It Works
-
-### 1. PHP Integration
-
-The plugin registers accessibility checks using the Block Accessibility Checks API:
+The example uses `register_check_with_plugin_detection()` for automatic plugin integration:
 
 ```php
 // Functions/CheckAlbumCards.php
-add_action( 'ba11yc_ready', array( $this, 'register_checks' ) );
-
 public function register_checks( $registry ) {
     $registry->register_check_with_plugin_detection(
-        'multi-block-check-example/album-card',
+        'multi-block-checks-example/album-card',
         'check_album_heading_text',
         array(
-            'error_msg'   => __( 'A title is required for each album card.', 'multi-block-checks-example' ),
-            'warning_msg' => __( 'Consider adding an album title for better accessibility.', 'multi-block-checks-example' ),
-            'description' => __( 'Set the requirements for the album title attribute', 'multi-block-checks-example' ),
+            'error_msg'   => __( 'Heading text is required.', 'multi-block-checks-example' ),
+            'warning_msg' => __( 'Heading text is recommended.', 'multi-block-checks-example' ),
+            'description' => __( 'Validates that the heading text is not empty.', 'multi-block-checks-example' ),
             'type'        => 'settings',
             'category'    => 'accessibility',
         )
     );
+    // ... more checks
 }
 ```
 
-### 2. JavaScript Validation
+### 3. Implementing Validation Logic (JavaScript)
 
-Real-time validation is implemented using WordPress hooks:
+Validation logic runs in the editor via the `ba11yc_validate_block` filter:
 
 ```javascript
 // src/scripts/checks/album-card-check.js
 addFilter(
     'ba11yc_validate_block',
-    'multi-block-checks-example/validation',
-    (isValid, blockType, attributes, checkName) => {
-        if (blockType !== 'multi-block-check-example/album-card') {
+    'multi-block-checks-example/album-card-validation',
+    (isValid, blockName, attributes, checkName) => {
+        if (blockName !== 'multi-block-checks-example/album-card') {
             return isValid;
         }
 
         switch (checkName) {
             case 'check_album_heading_text':
                 return !!(attributes.headingText && attributes.headingText.trim());
-            case 'check_album_release_date':
-                return !!(attributes.releaseDate && attributes.releaseDate.trim());
-            case 'check_album_description':
-                return !!(attributes.description && attributes.description.trim());
-            case 'check_album_source_link':
-                return !!(attributes.sourceUrl && attributes.sourceUrl.trim());
-            default:
-                return isValid;
+            // ... more checks
         }
+        return isValid;
     }
 );
 ```
 
-### 3. Meta Field Validation (PHP)
+### 4. Meta Field Validation (PHP)
 
-Post meta fields are validated using the `MetaValidation` class:
+Post meta validation is registered using helper methods:
 
 ```php
 // Functions/Post_Type.php
@@ -212,7 +164,7 @@ register_meta(
 );
 ```
 
-### 4. Meta Field Validation (JavaScript)
+### 5. Meta Field Validation (JavaScript)
 
 Client-side validation for meta fields uses the `ba11yc_validate_meta` filter:
 
@@ -232,16 +184,7 @@ addFilter(
                     return !!(value && value.trim());
                 }
                 break;
-            case 'band_record_label':
-                if (checkName === 'required') {
-                    return !!(value && value.trim());
-                }
-                break;
-            case 'band_first_album':
-                if (checkName === 'required') {
-                    return !!(value && value.trim());
-                }
-                break;
+            // ... more checks
         }
 
         return isValid;
@@ -249,33 +192,32 @@ addFilter(
 );
 ```
 
-### 5. Custom Plugin Sidebar
+### 6. Custom Plugin Sidebar & Hook Integration
 
-The example includes a custom plugin sidebar with validated meta field components:
+The example demonstrates using the `useMetaField` hook to automatically handle validation state:
 
 ```javascript
 // src/scripts/sidebars/band-plugin-sidebar.js
-const { ValidatedToolsPanelItem } = window.BlockAccessibilityChecks || {};
-const { MetaField } = window.BlockAccessibilityChecks || {};
+import { useMetaField } from '../helpers/useMetaField';
 
-// Using ValidatedToolsPanelItem in a ToolsPanel
-<ValidatedToolsPanelItem
-    metaKey="band_origin"
-    hasValue={() => bandOrigin !== ''}
-    label="City of Origin"
-    onDeselect={() => updateMeta('band_origin', '')}
-    isShownByDefault
->
-    {originCityField}
-</ValidatedToolsPanelItem>
+const BandDetailsSidebar = () => {
+    // Use the hook to get props for your field
+    const originProps = useMetaField('band_origin', 'Enter the city of origin');
 
-// Using MetaField wrapper component
-<MetaField metaKey="band_record_label">
-    {recordLabelField}
-</MetaField>
+    return (
+        <PluginSidebar name="band-details-sidebar" title="Band Details">
+            <PanelBody>
+                <TextControl
+                    label="City of Origin"
+                    {...originProps} 
+                />
+            </PanelBody>
+        </PluginSidebar>
+    );
+};
 ```
 
-### 6. Settings Integration
+### 7. Settings Integration
 
 Checks registered with `'type' => 'settings'` automatically appear in the WordPress admin under **Block Checks → Multi-Block Check Example**, allowing site administrators to:
 
@@ -303,39 +245,28 @@ block-check-integration-example/
 │   │   │   ├── save.js                  # Save component
 │   │   │   └── style.scss               # Block styles
 │   │   └── movie-card/                  # Movie Card block
-│   │       ├── block.json               # Block configuration
-│   │       ├── edit.js                  # Editor component
-│   │       ├── index.js                 # Block registration
-│   │       ├── save.js                  # Save component
-│   │       └── style.scss               # Block styles
 │   ├── scripts/
-│   │   ├── checks/
-│   │   │   ├── album-card-check.js      # Album Card validation
-│   │   │   ├── meta-validation.js       # Meta field validation
-│   │   │   └── movie-card-check.js      # Movie Card validation
-│   │   ├── helpers/
-│   │   │   ├── date-selector.js         # Date picker component
-│   │   │   └── heading-selector.js      # Heading level selector
-│   │   └── sidebars/
-│   │       └── band-plugin-sidebar.js   # Band post type plugin sidebar
-│   ├── editor-script.js                 # Editor initialization
-│   └── frontend-script.js               # Frontend initialization
-├── build/                               # Compiled assets
-├── plugin.php                           # Main plugin file
-├── package.json                         # Node.js dependencies
-├── composer.json                        # PHP dependencies
-└── webpack.config.js                    # Build configuration
+│   │   ├── checks/                      # JavaScript validation logic
+│   │   │   ├── album-card-check.js      # Album card validation
+│   │   │   ├── movie-card-check.js      # Movie card validation
+│   │   │   ├── editor-checks.js         # Editor-level checks
+│   │   │   └── meta-validation.js       # Meta field validation
+│   │   ├── helpers/                     # Helper utilities
+│   │   │   ├── useMetaField.js          # Meta field hook shim
+│   │   │   └── useMetaField.md          # Hook documentation
+│   │   └── sidebars/                    # Plugin sidebar components
+│   │       └── band-plugin-sidebar.js   # Sidebar using useMetaField
+├── block-check-integration-example.php  # Main plugin file
+└── README.md                            # This file
 ```
 
-## Key Features Demonstrated
+## Key Takeaways
 
-- **Real-time Validation**: Accessibility checks run as users edit content for both blocks and post meta
-- **Visual Feedback**: Error/warning indicators in the block editor and meta field components
-- **Publishing Control**: Error-level checks prevent publishing for both block and meta validation
-- **Flexible Configuration**: Admin settings for each validation rule (blocks and meta fields)
+- **Separation of Concerns**: Register checks in PHP, implement validation logic in JavaScript
+- **Shared Validation**: Reuse validation logic across similar blocks (e.g., album and movie cards)
 - **Multiple Block Support**: Shared validation logic across block types
 - **Meta Field Validation**: Post meta validation using `MetaValidation::required()`
-- **Custom Plugin Sidebar**: Example sidebar with `ValidatedToolsPanelItem` and `MetaField` components
+- **Custom Plugin Sidebar**: Example sidebar with `useMetaField` hook integration
 - **Custom Post Type**: Band post type with custom taxonomy and validated meta fields
 - **Modern Build Process**: Webpack-based asset compilation with WordPress Scripts
 - **Plugin Detection**: Uses `register_check_with_plugin_detection()` for better integration
@@ -350,9 +281,7 @@ This example demonstrates integration with the Block Accessibility Checks plugin
   - `ba11yc_validate_meta` for post meta validation logic
 - **Registry API**: Programmatic check management with plugin detection
 - **Meta Validation API**: `MetaValidation::required()` for post meta field validation
-- **UI Components**: 
-  - `ValidatedToolsPanelItem` for ToolsPanel integration
-  - `MetaField` wrapper component for automatic validation display
+- **Hooks API**: `useMetaField` for automatic state management and validation display
 - **Settings API**: Automatic admin interface generation for both block and meta checks
 
 ## Customization
@@ -394,49 +323,3 @@ The Band post type includes three validated meta fields:
 - `band_origin` (string): City where the band originated (e.g., "Los Angeles, CA", "London, UK")
 - `band_record_label` (string): The band's record label
 - `band_first_album` (string): Title of the band's first album
-
-These fields are displayed in a custom plugin sidebar and include real-time validation feedback.
-
-## Customization
-
-To adapt this example for your own blocks and post types:
-
-### For Custom Blocks:
-
-1. **Update block types** in `Functions/CheckAlbumCards.php` and `Functions/CheckMovieCards.php`
-2. **Modify validation logic** in `src/scripts/checks/*-check.js`
-3. **Adjust block attributes** in `src/blocks/*/block.json`
-4. **Customize error messages** and validation rules
-
-### For Custom Post Types:
-
-1. **Create your post type** in `Functions/Post_Type.php`
-2. **Register meta fields** with `MetaValidation::required()` validation
-3. **Add JavaScript validation** in `src/scripts/checks/meta-validation.js`
-4. **Create a plugin sidebar** in `src/scripts/sidebars/` with validated components
-5. **Use `ValidatedToolsPanelItem`** for ToolsPanel integration
-6. **Use `MetaField` wrapper** for automatic validation display
-
-### General:
-
-1. **Update text domain** and plugin information in `plugin.php`
-2. **Add new helper components** in `src/scripts/helpers/`
-3. **Configure validation levels** in the WordPress admin under Block Checks
-
-## Support & Resources
-
-- **[Block Accessibility Checks Plugin](https://wordpress.org/plugins/block-accessibility-checks/)**: Main plugin documentation
-- **[Developer API Documentation](https://github.com/troychaplin/block-accessibility-checks/tree/main/docs)**: Complete API reference
-- **[Quick Start Guide](https://github.com/troychaplin/block-accessibility-checks/blob/main/docs/quick-start.md)**: Step-by-step integration guide
-
-## Contributing
-
-This example plugin is designed to help developers understand and implement accessibility validation. Contributions to improve the example or add new patterns are welcome!
-
-## License
-
-This example plugin is licensed under the GPL v2 or later, matching the Block Accessibility Checks plugin license.
-
----
-
-**Note**: This example requires the Block Accessibility Checks plugin to be installed and activated for full functionality.
