@@ -9,7 +9,7 @@
 
 namespace Multi_Block_Checks;
 
-use BlockAccessibility\MetaValidation;
+use BlockAccessibility\Meta\Validator;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -182,7 +182,7 @@ class Post_Type {
 				'show_in_rest'      => true,
 				'object_subtype'    => 'band',
 				'sanitize_callback' => 'sanitize_text_field',
-				'validate_callback' => MetaValidation::required(
+				'validate_callback' => Validator::required(
 					'band',
 					'band_origin',
 					array(
@@ -203,7 +203,7 @@ class Post_Type {
 				'show_in_rest'      => true,
 				'object_subtype'    => 'band',
 				'sanitize_callback' => 'sanitize_text_field',
-				'validate_callback' => MetaValidation::required(
+				'validate_callback' => Validator::required(
 					'band',
 					'band_record_label',
 					array(
@@ -224,7 +224,7 @@ class Post_Type {
 				'show_in_rest'      => true,
 				'object_subtype'    => 'band',
 				'sanitize_callback' => 'sanitize_text_field',
-				'validate_callback' => MetaValidation::required(
+				'validate_callback' => Validator::required(
 					'band',
 					'band_first_album',
 					array(

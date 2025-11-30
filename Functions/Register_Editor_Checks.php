@@ -29,8 +29,8 @@ class Register_Editor_Checks {
 	 */
 	public function register_checks( $registry ): void {
 		// Check 1: First block must be a heading (for multiple post types).
-		$registry->register_editor_check_for_post_types(
-			array( 'post', 'page' ),
+        $registry->register_editor_check(
+            'band',
 			'first_block_heading',
 			array(
 				'error_msg'   => \__( 'The first block must be a Heading block.', 'multi-block-checks-example' ),
@@ -42,8 +42,8 @@ class Register_Editor_Checks {
 		);
 
 		// Check 2: No more than 3 paragraphs (just as a silly example).
-		$registry->register_editor_check(
-			'post',
+		$registry->register_editor_check_for_post_types(
+			array( 'band', 'page' ),
 			'max_paragraphs',
 			array(
 				'error_msg'   => \__( 'You cannot have more than 3 paragraphs.', 'multi-block-checks-example' ),
