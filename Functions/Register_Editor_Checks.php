@@ -29,8 +29,8 @@ class Register_Editor_Checks {
 	 */
 	public function register_checks( $registry ): void {
 		// Check 1: First block must be a heading (for multiple post types).
-        $registry->register_editor_check(
-            'band',
+		$registry->register_editor_check(
+			'band',
 			'first_block_heading',
 			array(
 				'error_msg'   => \__( 'The first block must be a Heading block.', 'multi-block-checks-example' ),

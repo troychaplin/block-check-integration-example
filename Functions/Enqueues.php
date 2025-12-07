@@ -39,11 +39,14 @@ class Enqueues {
 	public function enqueue_block_assets() {
 		$asset_file = include Plugin_Paths::plugin_path() . 'build/editor-script.asset.php';
 
-		// Add Block Accessibility Checks plugin as a dependency.
-		$dependencies = array_merge(
-			$asset_file['dependencies'],
-			array( 'block-accessibility-script' )
-		);
+		// Start with the base dependencies from the asset file.
+		$dependencies = $asset_file['dependencies'];
+
+		// Only add Block Accessibility Checks plugin as a dependency if it's active.
+		// This allows the sidebar to work even when the plugin is deactivated.
+		if ( wp_script_is( 'block-accessibility-script', 'registered' ) ) {
+			$dependencies[] = 'block-accessibility-script';
+		}
 
 		wp_enqueue_script(
 			'editor-script-js',
