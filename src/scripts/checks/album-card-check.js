@@ -15,7 +15,7 @@ addFilter(
 	'multi-block-checks-example/validation',
 	(isValid, blockType, attributes, checkName) => {
 		// Only handle our block type - FIXED: match the PHP registration
-		if (blockType !== 'multi-block-check-example/album-card') {
+		if (blockType !== 'ba11y-checks-example/album-card') {
 			return isValid;
 		}
 

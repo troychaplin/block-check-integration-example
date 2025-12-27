@@ -4,10 +4,10 @@
  *
  * Registers example editor checks with the Block Accessibility Checks plugin.
  *
- * @package Multi_Block_Checks
+ * @package Ba11y_Checks_Example
  */
 
-namespace Multi_Block_Checks;
+namespace Ba11y_Checks_Example;
 
 /**
  * Register Editor Checks Class

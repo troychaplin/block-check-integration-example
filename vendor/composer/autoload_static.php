@@ -4,16 +4,16 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5e77c26630a0c22a369b5f1992c53934
+class ComposerStaticInit505fa8e1bdbd4f49e7107ab9a627cd4a
 {
     public static $prefixLengthsPsr4 = array (
         'P' => 
         array (
             'PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 57,
         ),
-        'M' => 
+        'B' => 
         array (
-            'Multi_Block_Checks\\' => 19,
+            'Ba11y_Checks_Example\\' => 21,
         ),
     );
 
@@ -22,7 +22,7 @@ class ComposerStaticInit5e77c26630a0c22a369b5f1992c53934
         array (
             0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
         ),
-        'Multi_Block_Checks\\' => 
+        'Ba11y_Checks_Example\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Functions',
         ),
@@ -46,6 +46,7 @@ class ComposerStaticInit5e77c26630a0c22a369b5f1992c53934
         'PHPCSUtils\\Exceptions\\UnexpectedTokenType' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Exceptions/UnexpectedTokenType.php',
         'PHPCSUtils\\Exceptions\\ValueError' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Exceptions/ValueError.php',
         'PHPCSUtils\\Fixers\\SpacesFixer' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Fixers/SpacesFixer.php',
+        'PHPCSUtils\\Internal\\AttributeHelper' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Internal/AttributeHelper.php',
         'PHPCSUtils\\Internal\\Cache' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Internal/Cache.php',
         'PHPCSUtils\\Internal\\IsShortArrayOrList' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Internal/IsShortArrayOrList.php',
         'PHPCSUtils\\Internal\\IsShortArrayOrListWithCache' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Internal/IsShortArrayOrListWithCache.php',
@@ -57,6 +58,7 @@ class ComposerStaticInit5e77c26630a0c22a369b5f1992c53934
         'PHPCSUtils\\Tokens\\Collections' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Tokens/Collections.php',
         'PHPCSUtils\\Tokens\\TokenHelper' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Tokens/TokenHelper.php',
         'PHPCSUtils\\Utils\\Arrays' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Utils/Arrays.php',
+        'PHPCSUtils\\Utils\\AttributeBlock' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Utils/AttributeBlock.php',
         'PHPCSUtils\\Utils\\Conditions' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Utils/Conditions.php',
         'PHPCSUtils\\Utils\\Constants' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Utils/Constants.php',
         'PHPCSUtils\\Utils\\Context' => __DIR__ . '/..' . '/phpcsstandards/phpcsutils/PHPCSUtils/Utils/Context.php',
@@ -85,9 +87,9 @@ class ComposerStaticInit5e77c26630a0c22a369b5f1992c53934
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5e77c26630a0c22a369b5f1992c53934::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5e77c26630a0c22a369b5f1992c53934::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit5e77c26630a0c22a369b5f1992c53934::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit505fa8e1bdbd4f49e7107ab9a627cd4a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit505fa8e1bdbd4f49e7107ab9a627cd4a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit505fa8e1bdbd4f49e7107ab9a627cd4a::$classMap;
 
         }, null, ClassLoader::class);
     }

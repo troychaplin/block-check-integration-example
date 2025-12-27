@@ -8,9 +8,9 @@
  * Author:            Troy Chaplin
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       multi-block-checks-example
+ * Text Domain:       ba11y-checks-example
  *
- * @package Multi_Block_Checks
+ * @package Ba11y_Checks_Example
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -26,16 +26,15 @@ if ( file_exists( plugin_dir_path( __FILE__ ) . 'vendor/autoload.php' ) ) {
 }
 
 // Instantiate the classes.
-$Multi_Block_Checks_classes = array(
-	\Multi_Block_Checks\Plugin_Paths::class,
-	\Multi_Block_Checks\Register_Blocks::class,
-	\Multi_Block_Checks\Enqueues::class,
-	\Multi_Block_Checks\Post_Type::class,
-	\Multi_Block_Checks\CheckAlbumCards::class,
-	\Multi_Block_Checks\CheckMovieCards::class,
-	\Multi_Block_Checks\Register_Editor_Checks::class,
+$ba11y_checks_example_classes = array(
+	\Ba11y_Checks_Example\Plugin_Paths::class,
+	\Ba11y_Checks_Example\Register_Blocks::class,
+	\Ba11y_Checks_Example\Enqueues::class,
+	\Ba11y_Checks_Example\Post_Type::class,
+	\Ba11y_Checks_Example\CheckAlbumCards::class,
+	\Ba11y_Checks_Example\Register_Editor_Checks::class,
 );
 
-foreach ( $Multi_Block_Checks_classes as $Multi_Block_Checks_class ) {
-	new $Multi_Block_Checks_class();
+foreach ( $ba11y_checks_example_classes as $ba11y_checks_example_class ) {
+	new $ba11y_checks_example_class();
 }

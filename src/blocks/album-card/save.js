@@ -1,24 +1,25 @@
 import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
-	const { heading, headingLevel, link, excerpt } = attributes;
+	const { headingText, headingLevel, sourceUrl, description, releaseDate } = attributes;
 
 	const renderHeading = () => {
-		if (!heading) {
+		if (!headingText) {
 			return null;
 		}
 
 		const HeadingTag = `h${headingLevel || 2}`;
-		return <HeadingTag>{heading}</HeadingTag>;
+		return <HeadingTag>{headingText}</HeadingTag>;
 	};
 
 	return (
 		<div {...useBlockProps.save()}>
 			{renderHeading()}
-			{excerpt && <p>{excerpt}</p>}
-			{link && (
+			{releaseDate && <p>{releaseDate}</p>}
+			{description && <p>{description}</p>}
+			{sourceUrl && (
 				<p>
-					<a href={link}>{link}</a>
+					<a href={sourceUrl}>{sourceUrl}</a>
 				</p>
 			)}
 		</div>

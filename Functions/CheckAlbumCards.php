@@ -4,10 +4,10 @@
  *
  * This class integrates with the Block Accessibility Checks plugin to register accessibility checks for custom blocks.
  *
- * @package Multi_Block_Checks
+ * @package Ba11y_Checks_Example
  */
 
-namespace Multi_Block_Checks;
+namespace Ba11y_Checks_Example;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -48,7 +48,7 @@ class CheckAlbumCards {
 	 */
 	private function register_album_card_checks( $registry ) {
 		$registry->register_check_with_plugin_detection(
-			'multi-block-check-example/album-card',
+			'ba11y-checks-example/album-card',
 			'check_album_heading_text',
 			array(
 				'error_msg'   => __( 'A title is required for each album card.', 'multi-block-checks-example' ),
@@ -60,7 +60,7 @@ class CheckAlbumCards {
 		);
 
 		$registry->register_check_with_plugin_detection(
-			'multi-block-check-example/album-card',
+			'ba11y-checks-example/album-card',
 			'check_album_release_date',
 			array(
 				'error_msg'   => __( 'A release date is required for each album card.', 'multi-block-checks-example' ),
@@ -72,7 +72,7 @@ class CheckAlbumCards {
 		);
 
 		$registry->register_check_with_plugin_detection(
-			'multi-block-check-example/album-card',
+			'ba11y-checks-example/album-card',
 			'check_album_description',
 			array(
 				'error_msg'   => __( 'A description is required for each album card.', 'multi-block-checks-example' ),
@@ -84,7 +84,7 @@ class CheckAlbumCards {
 		);
 
 		$registry->register_check_with_plugin_detection(
-			'multi-block-check-example/album-card',
+			'ba11y-checks-example/album-card',
 			'check_album_source_link',
 			array(
 				'error_msg'   => __( 'A link is required for each album card.', 'multi-block-checks-example' ),

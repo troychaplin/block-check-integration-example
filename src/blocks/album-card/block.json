@@ -1,16 +1,19 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "multi-block-check-example/album-card",
+	"name": "ba11y-checks-example/album-card",
 	"version": "1.0.0",
 	"title": "Album Card",
+	"description": "An example block for displaying album cards with accessibility checks in place.",
 	"category": "text",
 	"icon": "universal-access",
-	"description": "An example block for displaying album cards with accessibility checks in place.",
-	"example": {},
-	"supports": {
-		"html": false
-	},
+    "parent": ["ba11y-checks-example/card-grid"],
+    "usesContext": [
+        "ba11y-checks-example/card-grid-radius"
+    ],
+    "supports": {
+        "html": false
+    },
 	"attributes": {
 		"headingText": {
 			"type": "string",
@@ -31,9 +34,13 @@
 		"description": {
 			"type": "string",
 			"default": ""
+		},
+		"radius": {
+			"type": "number",
+			"default": 6
 		}
 	},
-	"textdomain": "multi-block-checks-example",
+	"textdomain": "ba11y-checks-example",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "ba11y-checks-example/card-grid",
+  "title": "Card Grid",
+  "description": "A grid of cards with customizable columns, gap, and aspect ratio.",
+  "version": "0.1.0",
+  "category": "text",
+  "providesContext": {
+    "ba11y-checks-example/card-grid-radius": "radius"
+  },
+  "supports": {
+    "align": [
+      "full",
+      "wide"
+    ],
+    "alignWide": true,
+    "html": false
+  },
+  "attributes": {
+    "columns": {
+      "type": "number",
+      "default": 2
+    },
+    "gap": {
+      "type": "number",
+      "default": 25
+    },
+    "radius": {
+      "type": "number",
+      "default": 6
+    }
+  },
+  "textdomain": "ba11y-checks-example",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "example": {
+    "attributes": {
+      "columns": 2,
+      "gap": 10,
+      "radius": 6
+    },
+    "innerBlocks": [
+      {
+        "name": "ba11y-checks-example/album-card",
+        "attributes": {
+          "headingText": "Album Title",
+          "headingLevel": 2,
+          "releaseDate": "2025-01-01",
+          "description": "This is a description of the album.",
+          "radius": 4
+        }
+      },
+      {
+        "name": "ba11y-checks-example/album-card",
+        "attributes": {
+          "headingText": "Album Title",
+          "headingLevel": 2,
+          "releaseDate": "2025-01-01",
+          "description": "This is a description of the album.",
+          "radius": 4
+        }
+      },
+      {
+        "name": "ba11y-checks-example/album-card",
+        "attributes": {
+          "headingText": "Album Title",
+          "headingLevel": 2,
+          "releaseDate": "2025-01-01",
+          "description": "This is a description of the album.",
+          "radius": 4
+        }
+      },
+      {
+        "name": "ba11y-checks-example/album-card",
+        "attributes": {
+          "headingText": "Album Title",
+          "headingLevel": 2,
+          "releaseDate": "2025-01-01",
+          "description": "This is a description of the album.",
+          "radius": 4
+        }
+      }
+    ]
+  }
+}
