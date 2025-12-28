@@ -23,7 +23,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Register validation logic for testimonial block using the unified hook system
  */
-(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__.addFilter)('ba11yc_validate_block', 'multi-block-checks-example/validation', (isValid, blockType, attributes, checkName) => {
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__.addFilter)('ba11yc_validate_block', 'multi-block-checks-example/validation', (isValid, blockType, attributes, checkName, block) => {
   // Only handle our block type - FIXED: match the PHP registration
   if (blockType !== 'ba11y-checks-example/album-card') {
     return isValid;
@@ -44,9 +44,22 @@ __webpack_require__.r(__webpack_exports__);
     case 'check_album_source_link':
       // Return true if valid, false if invalid
       return !!(attributes.sourceUrl && attributes.sourceUrl.trim());
-    case 'check_album_description':
+    case 'check_album_innerblock_count':
+      // Check if the block has inner blocks and count paragraphs and buttons
+      let paragraphCount = 0;
+      let buttonCount = 0;
+      if (block.innerBlocks) {
+        block.innerBlocks.forEach(innerBlock => {
+          if (innerBlock.name === 'core/paragraph') {
+            paragraphCount++;
+          } else if (innerBlock.name === 'core/button' || innerBlock.name === 'core/buttons') {
+            buttonCount++;
+          }
+        });
+      }
+
       // Return true if valid, false if invalid
-      return !!(attributes.description && attributes.description.trim());
+      return paragraphCount >= 1 && paragraphCount <= 2 && buttonCount <= 1;
     default:
       // Unknown check, let other filters handle it
       return isValid;

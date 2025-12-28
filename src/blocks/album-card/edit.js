@@ -158,18 +158,10 @@ export default function Edit({ attributes, setAttributes, context }) {
 					)}
 					{releaseDate && <p>Release Date: {formatDate(releaseDate)}</p>}
 					<InnerBlocks
-						allowedBlocks={['core/paragraph']}
+						allowedBlocks={['core/paragraph', 'core/button', 'core/buttons']}
 						template={[['core/paragraph']]}
 						templateLock={false}
 					/>
-					{/* <RichText
-						tagName="p"
-						placeholder={`Add a short description of the album.`}
-						onChange={value => setAttributes({ description: value })}
-						value={description}
-						allowedFormats={['core/bold', 'core/italic']}
-						disableLineBreaks={true}
-					/> */}
 				</div>
 			</article>
 		</>

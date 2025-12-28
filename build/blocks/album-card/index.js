@@ -382,7 +382,7 @@ function Edit({
         }), releaseDate && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("p", {
           children: ["Release Date: ", (0,_scripts_helpers_date_selector__WEBPACK_IMPORTED_MODULE_6__.formatDate)(releaseDate)]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
-          allowedBlocks: ['core/paragraph'],
+          allowedBlocks: ['core/paragraph', 'core/button', 'core/buttons'],
           template: [['core/paragraph']],
           templateLock: false
         })]
