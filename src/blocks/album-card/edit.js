@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 import {
 	useBlockProps,
 	BlockControls,
+	InnerBlocks,
 	RichText,
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalLinkControl as LinkControl,
@@ -21,7 +22,7 @@ import {
 import { HeadingLevelSelector } from '../../scripts/helpers/heading-selector';
 
 export default function Edit({ attributes, setAttributes, context }) {
-	const { headingText, headingLevel, sourceUrl, releaseDate, description, radius } = attributes;
+	const { headingText, headingLevel, sourceUrl, releaseDate, radius } = attributes;
 	const HeadingTag = `h${headingLevel || 2}`;
 	const [isLinkOpen, setIsLinkOpen] = useState(false);
 	const [isDateOpen, setIsDateOpen] = useState(false);
@@ -156,14 +157,19 @@ export default function Edit({ attributes, setAttributes, context }) {
 						/>
 					)}
 					{releaseDate && <p>Release Date: {formatDate(releaseDate)}</p>}
-					<RichText
+					<InnerBlocks
+						allowedBlocks={['core/paragraph']}
+						template={[['core/paragraph']]}
+						templateLock={false}
+					/>
+					{/* <RichText
 						tagName="p"
 						placeholder={`Add a short description of the album.`}
 						onChange={value => setAttributes({ description: value })}
 						value={description}
 						allowedFormats={['core/bold', 'core/italic']}
 						disableLineBreaks={true}
-					/>
+					/> */}
 				</div>
 			</article>
 		</>

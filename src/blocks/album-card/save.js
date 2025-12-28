@@ -1,7 +1,7 @@
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
-	const { headingText, headingLevel, sourceUrl, description, releaseDate } = attributes;
+	const { headingText, headingLevel, sourceUrl, releaseDate } = attributes;
 
 	const renderHeading = () => {
 		if (!headingText) {
@@ -16,7 +16,7 @@ export default function save({ attributes }) {
 		<div {...useBlockProps.save()}>
 			{renderHeading()}
 			{releaseDate && <p>{releaseDate}</p>}
-			{description && <p>{description}</p>}
+			<InnerBlocks.Content />
 			{sourceUrl && (
 				<p>
 					<a href={sourceUrl}>{sourceUrl}</a>
