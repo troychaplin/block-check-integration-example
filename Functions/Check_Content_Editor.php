@@ -12,7 +12,7 @@ namespace Ba11y_Checks_Example;
 /**
  * Register Editor Checks Class
  */
-class Register_Editor_Checks {
+class Check_Content_Editor {
 
 	/**
 	 * Constructor
@@ -42,8 +42,8 @@ class Register_Editor_Checks {
 		);
 
 		// Check 2: No more than 3 paragraphs (just as a silly example).
-		$registry->register_editor_check_for_post_types(
-			array( 'band', 'page' ),
+		$registry->register_editor_check(
+			'band',
 			'max_paragraphs',
 			array(
 				'error_msg'   => \__( 'You cannot have more than 3 paragraphs.', 'multi-block-checks-example' ),

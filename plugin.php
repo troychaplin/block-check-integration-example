@@ -31,8 +31,8 @@ $ba11y_checks_example_classes = array(
 	\Ba11y_Checks_Example\Register_Blocks::class,
 	\Ba11y_Checks_Example\Enqueues::class,
 	\Ba11y_Checks_Example\Post_Type::class,
-	\Ba11y_Checks_Example\CheckAlbumCards::class,
-	\Ba11y_Checks_Example\Register_Editor_Checks::class,
+	\Ba11y_Checks_Example\Check_Album_Cards::class,
+	\Ba11y_Checks_Example\Check_Content_Editor::class,
 );
 
 foreach ( $ba11y_checks_example_classes as $ba11y_checks_example_class ) {

@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * This class integrates with the Block Accessibility Checks plugin to register accessibility checks for custom blocks.
  */
-class CheckAlbumCards {
+class Check_Album_Cards {
 	/**
 	 * Constructor
 	 *
