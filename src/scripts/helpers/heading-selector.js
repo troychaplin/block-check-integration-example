@@ -16,27 +16,27 @@ import {
  */
 export const getHeadingLevelOptions = () => [
 	{
-		title: __('Heading 2', 'multi-block-checks-example'),
+		title: __('Heading 2', 'ba11y-checks-example'),
 		icon: headingLevel2,
 		level: 2,
 	},
 	{
-		title: __('Heading 3', 'multi-block-checks-example'),
+		title: __('Heading 3', 'ba11y-checks-example'),
 		icon: headingLevel3,
 		level: 3,
 	},
 	{
-		title: __('Heading 4', 'multi-block-checks-example'),
+		title: __('Heading 4', 'ba11y-checks-example'),
 		icon: headingLevel4,
 		level: 4,
 	},
 	{
-		title: __('Heading 5', 'multi-block-checks-example'),
+		title: __('Heading 5', 'ba11y-checks-example'),
 		icon: headingLevel5,
 		level: 5,
 	},
 	{
-		title: __('Heading 6', 'multi-block-checks-example'),
+		title: __('Heading 6', 'ba11y-checks-example'),
 		icon: headingLevel6,
 		level: 6,
 	},
@@ -54,7 +54,7 @@ export const getHeadingLevelOptions = () => [
 export const HeadingLevelSelector = ({
 	currentLevel = 2,
 	onLevelChange,
-	label = __('Change heading level', 'multi-block-checks-example'),
+	label = __('Change heading level', 'ba11y-checks-example'),
 	availableLevels = [2, 3, 4, 5, 6],
 }) => {
 	const allOptions = getHeadingLevelOptions();

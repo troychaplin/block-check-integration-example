@@ -17,7 +17,7 @@
 
     <!-- Rules: WordPress Coding Standards -->
     <config name="minimum_supported_wp_version" value="6.6"/>
-    <config name="text_domain" value="multi-block-checks-example"/>
+    <config name="text_domain" value="ba11y-checks-example"/>
     
     <rule ref="WordPress">
         <exclude name="WordPress.Files.FileName"/>
@@ -50,7 +50,7 @@
     <rule ref="WordPress.WP.I18n">
         <properties>
             <property name="text_domain" type="array">
-                <element value="multi-block-checks-example"/>
+                <element value="ba11y-checks-example"/>
             </property>
         </properties>
     </rule>

@@ -33,11 +33,11 @@ class Check_Content_Editor {
 			'band',
 			'first_block_heading',
 			array(
-				'error_msg'   => \__( 'The first block must be a Heading block.', 'multi-block-checks-example' ),
-				'warning_msg' => \__( 'It is recommended that the first block is a Heading block.', 'multi-block-checks-example' ),
+				'error_msg'   => \__( 'The first block must be a Heading block.', 'ba11y-checks-example' ),
+				'warning_msg' => \__( 'It is recommended that the first block is a Heading block.', 'ba11y-checks-example' ),
 				'type'        => 'settings', // Default to error.
 				'priority'    => 10,
-				'description' => \__( 'Ensures that the content starts with a heading for better accessibility and SEO.', 'multi-block-checks-example' ),
+				'description' => \__( 'Ensures that the content starts with a heading for better accessibility and SEO.', 'ba11y-checks-example' ),
 			)
 		);
 
@@ -46,11 +46,11 @@ class Check_Content_Editor {
 			'band',
 			'max_paragraphs',
 			array(
-				'error_msg'   => \__( 'You cannot have more than 3 paragraphs.', 'multi-block-checks-example' ),
-				'warning_msg' => \__( 'You have more than 3 paragraphs, which might be too long.', 'multi-block-checks-example' ),
+				'error_msg'   => \__( 'You cannot have more than 3 paragraphs.', 'ba11y-checks-example' ),
+				'warning_msg' => \__( 'You have more than 3 paragraphs, which might be too long.', 'ba11y-checks-example' ),
 				'type'        => 'settings', // Allow user to choose.
 				'priority'    => 20,
-				'description' => \__( 'Limits the number of paragraph blocks to encourage brevity.', 'multi-block-checks-example' ),
+				'description' => \__( 'Limits the number of paragraph blocks to encourage brevity.', 'ba11y-checks-example' ),
 			)
 		);
 	}

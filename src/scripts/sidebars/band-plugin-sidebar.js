@@ -34,7 +34,7 @@ const BandDetailsSidebar = () => {
 		'band_origin',
 		__(
 			'Where the band originated from (e.g., "Los Angeles, CA", "London, UK")',
-			'multi-block-checks-example'
+			'ba11y-checks-example'
 		)
 	);
 
@@ -42,7 +42,7 @@ const BandDetailsSidebar = () => {
 		'band_record_label',
 		__(
 			'The record label of the band (e.g., "Record Label Inc.", "Record Label LLC")',
-			'multi-block-checks-example'
+			'ba11y-checks-example'
 		)
 	);
 
@@ -50,7 +50,7 @@ const BandDetailsSidebar = () => {
 		'band_first_album',
 		__(
 			'The first album of the band (e.g., "Album Title", "Album Title 2")',
-			'multi-block-checks-example'
+			'ba11y-checks-example'
 		)
 	);
 
@@ -82,13 +82,13 @@ const BandDetailsSidebar = () => {
 				</ToolsPanelItem>
 			</ToolsPanel>
 
-			<PanelBody title={__('PanelBody Example', 'multi-block-checks-example')}>
+			<PanelBody title={__('PanelBody Example', 'ba11y-checks-example')}>
 				<TextControl
-					label={__('Record Label', 'multi-block-checks-example')}
+					label={__('Record Label', 'ba11y-checks-example')}
 					{...labelProps}
 				/>
 				<TextControl
-					label={__('First Album', 'multi-block-checks-example')}
+					label={__('First Album', 'ba11y-checks-example')}
 					{...albumProps}
 				/>
 			</PanelBody>

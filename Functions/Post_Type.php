@@ -190,9 +190,9 @@ class Post_Type {
 						'band',
 						'band_origin',
 						array(
-							'error_msg'   => __( 'City of Origin is required.', 'multi-block-checks-example' ),
-							'warning_msg' => __( 'City of Origin is recommended.', 'multi-block-checks-example' ),
-							'description' => __( 'The city where the band originated', 'multi-block-checks-example' ),
+							'error_msg'   => __( 'City of Origin is required.', 'ba11y-checks-example' ),
+							'warning_msg' => __( 'City of Origin is recommended.', 'ba11y-checks-example' ),
+							'description' => __( 'The city where the band originated', 'ba11y-checks-example' ),
 							'type'        => 'settings',
 						)
 					)
@@ -214,9 +214,9 @@ class Post_Type {
 						'band',
 						'band_record_label',
 						array(
-							'error_msg'   => __( 'Record Label is required.', 'multi-block-checks-example' ),
-							'warning_msg' => __( 'Record Label is recommended.', 'multi-block-checks-example' ),
-							'description' => __( 'The record label of the band', 'multi-block-checks-example' ),
+							'error_msg'   => __( 'Record Label is required.', 'ba11y-checks-example' ),
+							'warning_msg' => __( 'Record Label is recommended.', 'ba11y-checks-example' ),
+							'description' => __( 'The record label of the band', 'ba11y-checks-example' ),
 							'type'        => 'settings',
 						)
 					)
@@ -238,9 +238,9 @@ class Post_Type {
 						'band',
 						'band_first_album',
 						array(
-							'error_msg'   => __( 'First Album is required.', 'multi-block-checks-example' ),
-							'warning_msg' => __( 'First Album is recommended.', 'multi-block-checks-example' ),
-							'description' => __( 'The first album of the band', 'multi-block-checks-example' ),
+							'error_msg'   => __( 'First Album is required.', 'ba11y-checks-example' ),
+							'warning_msg' => __( 'First Album is recommended.', 'ba11y-checks-example' ),
+							'description' => __( 'The first album of the band', 'ba11y-checks-example' ),
 							'type'        => 'settings',
 						)
 					)

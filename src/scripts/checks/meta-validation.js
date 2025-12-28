@@ -14,7 +14,7 @@ import { addFilter } from '@wordpress/hooks';
  */
 addFilter(
 	'ba11yc_validate_meta',
-	'multi-block-checks-example/validation',
+	'ba11y-checks-example/validation',
 	(isValid, value, postType, metaKey, checkName) => {
 		// Only validate for band post type
 		if (postType !== 'band') {

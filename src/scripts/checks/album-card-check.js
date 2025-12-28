@@ -1,5 +1,5 @@
 /**
- * Testimonial Block Accessibility Checks
+ * Album Card Block Accessibility Checks
  *
  * Integrates with the Block Accessibility Checks plugin validation system.
  * All validation logic is now handled in JavaScript only.
@@ -8,33 +8,31 @@
 import { addFilter } from '@wordpress/hooks';
 
 /**
- * Register validation logic for testimonial block using the unified hook system
+ * Register validation logic for album card block using the unified hook system
  */
 addFilter(
 	'ba11yc_validate_block',
-	'multi-block-checks-example/validation',
+	'ba11y-checks-example/validation',
 	(isValid, blockType, attributes, checkName, block) => {
 		// Only handle our block type - FIXED: match the PHP registration
 		if (blockType !== 'ba11y-checks-example/album-card') {
 			return isValid;
 		}
 
-		// Run validation based on check name
+		// Run validation based on the name of the check as defined in the PHP file
 		switch (checkName) {
 			case 'check_album_heading_text':
-				// If heading exists, it should have content
 				if (attributes.headingText !== undefined && attributes.headingText !== null) {
 					return !!(attributes.headingText && attributes.headingText.trim());
 				}
-				// No heading is fine (valid)
 				return true;
 
+			// Check if the release date is valid and return true, return false if invalid
 			case 'check_album_release_date':
-				// Return true if valid, false if invalid
 				return !!(attributes.releaseDate && attributes.releaseDate.trim());
 
+			// Check if the source link is valid and return true, return false if invalid
 			case 'check_album_source_link':
-				// Return true if valid, false if invalid
 				return !!(attributes.sourceUrl && attributes.sourceUrl.trim());
 
 			case 'check_album_innerblock_count':
@@ -55,11 +53,12 @@ addFilter(
 					});
 				}
 
-				// Return true if valid, false if invalid
+				// Check if the inner block count is valid and return true, return false if invalid
+				// The inner block count should be between 1 and 2 for paragraphs and 1 for buttons
 				return paragraphCount >= 1 && paragraphCount <= 2 && buttonCount <= 1;
 
 			default:
-				// Unknown check, let other filters handle it
+				// If the check name is not recognized, let other filters handle it
 				return isValid;
 		}
 	}

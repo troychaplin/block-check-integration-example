@@ -1,6 +1,6 @@
 {
-	"name": "multi-block-checks-example",
-	"version": "1.0.0",
+	"name": "ba11y-checks-example",
+	"version": "1.4.21",
 	"description": "An example of an external multi-block with accessibility & validation checks",
 	"author": "Troy Chaplin",
 	"license": "GPL-2.0-or-later",

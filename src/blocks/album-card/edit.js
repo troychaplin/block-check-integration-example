@@ -89,8 +89,8 @@ export default function Edit({ attributes, setAttributes, context }) {
 						icon={link}
 						label={
 							sourceUrl
-								? __('Edit link', 'multi-block-checks-example')
-								: __('Add link', 'multi-block-checks-example')
+								? __('Edit link', 'ba11y-checks-example')
+								: __('Add link', 'ba11y-checks-example')
 						}
 						onClick={() => setIsLinkOpen(true)}
 						isPressed={!!sourceUrl}
@@ -112,8 +112,8 @@ export default function Edit({ attributes, setAttributes, context }) {
 						icon={calendar}
 						label={
 							releaseDate
-								? __('Edit release date', 'multi-block-checks-example')
-								: __('Add release date', 'multi-block-checks-example')
+								? __('Edit release date', 'ba11y-checks-example')
+								: __('Add release date', 'ba11y-checks-example')
 						}
 						onClick={() => setIsDateOpen(true)}
 						isPressed={!!releaseDate}
@@ -130,7 +130,7 @@ export default function Edit({ attributes, setAttributes, context }) {
 						onYearChange={setSelectedYear}
 						onDateSet={onDateSet}
 						title="Select Release Date"
-						textDomain="multi-block-checks-example"
+						textDomain="ba11y-checks-example"
 					/>
 				</ToolbarGroup>
 			</BlockControls>

@@ -6,19 +6,19 @@ import { SelectControl, TextControl } from '@wordpress/components';
  * @return {Array} Array of month options
  */
 export const getMonthOptions = () => [
-	{ label: __('Select month', 'multi-block-checks-example'), value: '' },
-	{ label: __('January', 'multi-block-checks-example'), value: '01' },
-	{ label: __('February', 'multi-block-checks-example'), value: '02' },
-	{ label: __('March', 'multi-block-checks-example'), value: '03' },
-	{ label: __('April', 'multi-block-checks-example'), value: '04' },
-	{ label: __('May', 'multi-block-checks-example'), value: '05' },
-	{ label: __('June', 'multi-block-checks-example'), value: '06' },
-	{ label: __('July', 'multi-block-checks-example'), value: '07' },
-	{ label: __('August', 'multi-block-checks-example'), value: '08' },
-	{ label: __('September', 'multi-block-checks-example'), value: '09' },
-	{ label: __('October', 'multi-block-checks-example'), value: '10' },
-	{ label: __('November', 'multi-block-checks-example'), value: '11' },
-	{ label: __('December', 'multi-block-checks-example'), value: '12' },
+	{ label: __('Select month', 'ba11y-checks-example'), value: '' },
+	{ label: __('January', 'ba11y-checks-example'), value: '01' },
+	{ label: __('February', 'ba11y-checks-example'), value: '02' },
+	{ label: __('March', 'ba11y-checks-example'), value: '03' },
+	{ label: __('April', 'ba11y-checks-example'), value: '04' },
+	{ label: __('May', 'ba11y-checks-example'), value: '05' },
+	{ label: __('June', 'ba11y-checks-example'), value: '06' },
+	{ label: __('July', 'ba11y-checks-example'), value: '07' },
+	{ label: __('August', 'ba11y-checks-example'), value: '08' },
+	{ label: __('September', 'ba11y-checks-example'), value: '09' },
+	{ label: __('October', 'ba11y-checks-example'), value: '10' },
+	{ label: __('November', 'ba11y-checks-example'), value: '11' },
+	{ label: __('December', 'ba11y-checks-example'), value: '12' },
 ];
 
 /**
@@ -82,7 +82,7 @@ export const DateSelect = ({
 		<div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
 			<div style={{ flex: '2' }}>
 				<SelectControl
-					label={__('Month', 'multi-block-checks-example')}
+					label={__('Month', 'ba11y-checks-example')}
 					value={month}
 					options={monthOptions}
 					onChange={onMonthChange}
@@ -91,25 +91,25 @@ export const DateSelect = ({
 			</div>
 			<div style={{ flex: '1' }}>
 				<TextControl
-					label={__('Day', 'multi-block-checks-example')}
+					label={__('Day', 'ba11y-checks-example')}
 					value={day}
 					type="number"
 					min="1"
 					max="31"
 					onChange={handleDayChange}
-					help={__('1–31', 'multi-block-checks-example')}
+					help={__('1–31', 'ba11y-checks-example')}
 					__nextHasNoMarginBottom
 				/>
 			</div>
 			<div style={{ flex: '1' }}>
 				<TextControl
-					label={__('Year', 'multi-block-checks-example')}
+					label={__('Year', 'ba11y-checks-example')}
 					value={year}
 					type="number"
 					min="1900"
 					max="2100"
 					onChange={handleYearChange}
-					help={__('1900–2100', 'multi-block-checks-example')}
+					help={__('1900–2100', 'ba11y-checks-example')}
 					__nextHasNoMarginBottom
 				/>
 			</div>

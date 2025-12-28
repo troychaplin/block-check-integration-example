@@ -12,10 +12,10 @@ This plugin serves as a reference implementation for developers who want to:
 
 ### Custom Blocks
 
-- **Album Card Block** (`multi-block-checks-example/album-card`)
+- **Album Card Block** (`ba11y-checks-example/album-card`)
   - Displays an album cover, title, release date, and description
   - Includes multiple accessibility checks
-- **Movie Card Block** (`multi-block-checks-example/movie-card`)
+- **Movie Card Block** (`ba11y-checks-example/movie-card`)
   - Displays a movie poster, title, release date, and description
   - Demonstrates shared validation logic across multiple block types
 
@@ -95,12 +95,12 @@ The example uses `register_check_with_plugin_detection()` for automatic plugin i
 // Functions/CheckAlbumCards.php
 public function register_checks( $registry ) {
     $registry->register_check_with_plugin_detection(
-        'multi-block-checks-example/album-card',
+        'ba11y-checks-example/album-card',
         'check_album_heading_text',
         array(
-            'error_msg'   => __( 'Heading text is required.', 'multi-block-checks-example' ),
-            'warning_msg' => __( 'Heading text is recommended.', 'multi-block-checks-example' ),
-            'description' => __( 'Validates that the heading text is not empty.', 'multi-block-checks-example' ),
+            'error_msg'   => __( 'Heading text is required.', 'ba11y-checks-example' ),
+            'warning_msg' => __( 'Heading text is recommended.', 'ba11y-checks-example' ),
+            'description' => __( 'Validates that the heading text is not empty.', 'ba11y-checks-example' ),
             'type'        => 'settings',
             'category'    => 'accessibility',
         )
@@ -117,9 +117,9 @@ Validation logic runs in the editor via the `ba11yc_validate_block` filter:
 // src/scripts/checks/album-card-check.js
 addFilter(
     'ba11yc_validate_block',
-    'multi-block-checks-example/album-card-validation',
+    'ba11y-checks-example/album-card-validation',
     (isValid, blockName, attributes, checkName) => {
-        if (blockName !== 'multi-block-checks-example/album-card') {
+        if (blockName !== 'ba11y-checks-example/album-card') {
             return isValid;
         }
 
@@ -154,9 +154,9 @@ register_meta(
             'band',
             'band_origin',
             array(
-                'error_msg'   => __( 'City of Origin is required.', 'multi-block-checks-example' ),
-                'warning_msg' => __( 'City of Origin is recommended.', 'multi-block-checks-example' ),
-                'description' => __( 'The city where the band originated', 'multi-block-checks-example' ),
+                'error_msg'   => __( 'City of Origin is required.', 'ba11y-checks-example' ),
+                'warning_msg' => __( 'City of Origin is recommended.', 'ba11y-checks-example' ),
+                'description' => __( 'The city where the band originated', 'ba11y-checks-example' ),
                 'type'        => 'settings',
             )
         ),
@@ -172,7 +172,7 @@ Client-side validation for meta fields uses the `ba11yc_validate_meta` filter:
 // src/scripts/checks/meta-validation.js
 addFilter(
     'ba11yc_validate_meta',
-    'multi-block-checks-example/validation',
+    'ba11y-checks-example/validation',
     (isValid, value, postType, metaKey, checkName) => {
         if (postType !== 'band') {
             return isValid;
