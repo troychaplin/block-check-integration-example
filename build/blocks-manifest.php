@@ -4,14 +4,17 @@ return array(
 	'album-card' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'multi-block-check-example/album-card',
+		'name' => 'ba11y-checks-example/album-card',
 		'version' => '1.0.0',
 		'title' => 'Album Card',
+		'description' => 'An example block for displaying album cards with accessibility checks in place.',
 		'category' => 'text',
 		'icon' => 'universal-access',
-		'description' => 'An example block for displaying album cards with accessibility checks in place.',
-		'example' => array(
-			
+		'parent' => array(
+			'ba11y-checks-example/card-grid'
+		),
+		'usesContext' => array(
+			'ba11y-checks-example/card-grid-radius'
 		),
 		'supports' => array(
 			'html' => false
@@ -36,55 +39,103 @@ return array(
 			'description' => array(
 				'type' => 'string',
 				'default' => ''
+			),
+			'radius' => array(
+				'type' => 'number',
+				'default' => 6
 			)
 		),
-		'textdomain' => 'multi-block-checks-example',
+		'textdomain' => 'ba11y-checks-example',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
 		'viewScript' => 'file:./view.js'
 	),
-	'movie-card' => array(
+	'card-grid' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'multi-block-check-example/movie-card',
-		'version' => '1.0.0',
-		'title' => 'Movie Card',
+		'name' => 'ba11y-checks-example/card-grid',
+		'title' => 'Card Grid',
+		'description' => 'A grid of cards with customizable columns, gap, and aspect ratio.',
+		'version' => '0.1.0',
 		'category' => 'text',
-		'icon' => 'universal-access',
-		'description' => 'An example block for displaying movie cards with accessibility checks in place.',
-		'example' => array(
-			
+		'providesContext' => array(
+			'ba11y-checks-example/card-grid-radius' => 'radius'
 		),
 		'supports' => array(
+			'align' => array(
+				'full',
+				'wide'
+			),
+			'alignWide' => true,
 			'html' => false
 		),
 		'attributes' => array(
-			'headingText' => array(
-				'type' => 'string',
-				'default' => ''
-			),
-			'headingLevel' => array(
+			'columns' => array(
 				'type' => 'number',
 				'default' => 2
 			),
-			'sourceUrl' => array(
-				'type' => 'string',
-				'default' => ''
+			'gap' => array(
+				'type' => 'number',
+				'default' => 25
 			),
-			'releaseDate' => array(
-				'type' => 'string',
-				'default' => ''
-			),
-			'description' => array(
-				'type' => 'string',
-				'default' => ''
+			'radius' => array(
+				'type' => 'number',
+				'default' => 6
 			)
 		),
-		'textdomain' => 'multi-block-checks-example',
+		'textdomain' => 'ba11y-checks-example',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
-		'viewScript' => 'file:./view.js'
+		'example' => array(
+			'attributes' => array(
+				'columns' => 2,
+				'gap' => 10,
+				'radius' => 6
+			),
+			'innerBlocks' => array(
+				array(
+					'name' => 'ba11y-checks-example/album-card',
+					'attributes' => array(
+						'headingText' => 'Album Title',
+						'headingLevel' => 2,
+						'releaseDate' => '2025-01-01',
+						'description' => 'This is a description of the album.',
+						'radius' => 4
+					)
+				),
+				array(
+					'name' => 'ba11y-checks-example/album-card',
+					'attributes' => array(
+						'headingText' => 'Album Title',
+						'headingLevel' => 2,
+						'releaseDate' => '2025-01-01',
+						'description' => 'This is a description of the album.',
+						'radius' => 4
+					)
+				),
+				array(
+					'name' => 'ba11y-checks-example/album-card',
+					'attributes' => array(
+						'headingText' => 'Album Title',
+						'headingLevel' => 2,
+						'releaseDate' => '2025-01-01',
+						'description' => 'This is a description of the album.',
+						'radius' => 4
+					)
+				),
+				array(
+					'name' => 'ba11y-checks-example/album-card',
+					'attributes' => array(
+						'headingText' => 'Album Title',
+						'headingLevel' => 2,
+						'releaseDate' => '2025-01-01',
+						'description' => 'This is a description of the album.',
+						'radius' => 4
+					)
+				)
+			)
+		)
 	)
 );

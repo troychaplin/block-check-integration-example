@@ -5,11 +5,11 @@
    "license": "GPL-2.0-or-later",
    "autoload": {
        "psr-4": {
-           "Multi_Block_Checks\\": "Functions/"
+           "Ba11y_Checks_Example\\": "Functions/"
        }
    },
    "require-dev": {
-       "wp-coding-standards/wpcs": "^3.1"
+       "wp-coding-standards/wpcs": "^3.3.0"
    },
    "config": {
        "allow-plugins": {

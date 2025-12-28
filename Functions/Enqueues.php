@@ -4,12 +4,12 @@
  *
  * This class is responsible for enqueuing the plugin's assets.
  *
- * @package Multi_Block_Checks
+ * @package Ba11y_Checks_Example
  */
 
-namespace Multi_Block_Checks;
+namespace Ba11y_Checks_Example;
 
-use Multi_Block_Checks\Plugin_Paths;
+use Ba11y_Checks_Example\Plugin_Paths;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -39,11 +39,14 @@ class Enqueues {
 	public function enqueue_block_assets() {
 		$asset_file = include Plugin_Paths::plugin_path() . 'build/editor-script.asset.php';
 
-		// Add Block Accessibility Checks plugin as a dependency.
-		$dependencies = array_merge(
-			$asset_file['dependencies'],
-			array( 'block-accessibility-script' )
-		);
+		// Start with the base dependencies from the asset file.
+		$dependencies = $asset_file['dependencies'];
+
+		// Only add Block Accessibility Checks plugin as a dependency if it's active.
+		// This allows the sidebar to work even when the plugin is deactivated.
+		if ( wp_script_is( 'block-accessibility-script', 'registered' ) ) {
+			$dependencies[] = 'block-accessibility-script';
+		}
 
 		wp_enqueue_script(
 			'editor-script-js',

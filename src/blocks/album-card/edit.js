@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 import {
 	useBlockProps,
 	BlockControls,
+	InnerBlocks,
 	RichText,
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalLinkControl as LinkControl,
@@ -20,8 +21,8 @@ import {
 } from '../../scripts/helpers/date-selector';
 import { HeadingLevelSelector } from '../../scripts/helpers/heading-selector';
 
-export default function Edit({ attributes, setAttributes }) {
-	const { headingText, headingLevel, sourceUrl, releaseDate, description } = attributes;
+export default function Edit({ attributes, setAttributes, context }) {
+	const { headingText, headingLevel, sourceUrl, releaseDate, radius } = attributes;
 	const HeadingTag = `h${headingLevel || 2}`;
 	const [isLinkOpen, setIsLinkOpen] = useState(false);
 	const [isDateOpen, setIsDateOpen] = useState(false);
@@ -36,6 +37,18 @@ export default function Edit({ attributes, setAttributes }) {
 		setSelectedYear,
 		resetDateSelection,
 	} = useDateSelector();
+
+	const blockProps = useBlockProps({
+		className: 'ba11y-checks-example-album-card',
+		style: {
+			'--ba11y-check-example-card-grid-radius': `${radius}px`,
+		},
+	});
+
+	// Get attributes from context of parent block
+	setAttributes({
+		radius: context['ba11y-checks-example/card-grid-radius'],
+	});
 
 	// Parse existing releaseDate to populate date selector state
 	useEffect(() => {
@@ -122,7 +135,7 @@ export default function Edit({ attributes, setAttributes }) {
 				</ToolbarGroup>
 			</BlockControls>
 
-			<article {...useBlockProps()}>
+			<article {...blockProps}>
 				<div>
 					{sourceUrl ? (
 						<a href={sourceUrl} target="_blank" rel="noopener noreferrer">
@@ -144,13 +157,10 @@ export default function Edit({ attributes, setAttributes }) {
 						/>
 					)}
 					{releaseDate && <p>Release Date: {formatDate(releaseDate)}</p>}
-					<RichText
-						tagName="p"
-						placeholder={`Add a short description of the album.`}
-						onChange={value => setAttributes({ description: value })}
-						value={description}
-						allowedFormats={['core/bold', 'core/italic']}
-						disableLineBreaks={true}
+					<InnerBlocks
+						allowedBlocks={['core/paragraph', 'core/button', 'core/buttons']}
+						template={[['core/paragraph']]}
+						templateLock={false}
 					/>
 				</div>
 			</article>
