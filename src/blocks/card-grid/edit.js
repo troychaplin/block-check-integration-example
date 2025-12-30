@@ -21,7 +21,6 @@ export default function Edit({ attributes, setAttributes, style }) {
 	const blockTemplate = [
 		['ba11y-checks-example/album-card'],
 		['ba11y-checks-example/album-card'],
-		['ba11y-checks-example/album-card'],
 	];
 
 	return (
