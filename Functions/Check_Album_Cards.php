@@ -47,7 +47,7 @@ class Check_Album_Cards {
 	 * @return void
 	 */
 	private function register_album_card_checks( $registry ) {
-		$registry->register_check_with_plugin_detection(
+		$registry->register_block_check(
 			'ba11y-checks-example/album-card',
 			'check_album_heading_text',
 			array(
@@ -59,7 +59,7 @@ class Check_Album_Cards {
 			)
 		);
 
-		$registry->register_check_with_plugin_detection(
+		$registry->register_block_check(
 			'ba11y-checks-example/album-card',
 			'check_album_release_date',
 			array(
@@ -71,7 +71,7 @@ class Check_Album_Cards {
 			)
 		);
 
-		$registry->register_check_with_plugin_detection(
+		$registry->register_block_check(
 			'ba11y-checks-example/album-card',
 			'check_album_source_link',
 			array(
@@ -83,7 +83,7 @@ class Check_Album_Cards {
 			)
 		);
 
-		$registry->register_check_with_plugin_detection(
+		$registry->register_block_check(
 			'ba11y-checks-example/album-card',
 			'check_album_innerblock_count',
 			array(
